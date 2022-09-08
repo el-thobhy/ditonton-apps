@@ -1,5 +1,5 @@
 import 'package:ditonton_apps/common/constants.dart';
-import 'package:ditonton_apps/presentation/pages/about_page.dart';
+import '../../../about/lib/about_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 

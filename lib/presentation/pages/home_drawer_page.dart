@@ -1,6 +1,6 @@
+import 'package:about/about.dart';
 import 'package:ditonton_apps/common/constants.dart';
 import 'package:ditonton_apps/common/drawer_item_enum.dart';
-import 'package:ditonton_apps/presentation/pages/about_page.dart';
 import 'package:ditonton_apps/presentation/pages/home_movie_page.dart';
 import 'package:ditonton_apps/presentation/pages/home_tv_show_page.dart';
 import 'package:ditonton_apps/presentation/pages/search_page.dart';
