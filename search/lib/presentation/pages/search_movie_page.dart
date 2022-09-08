@@ -5,7 +5,7 @@ import 'package:core/presentation/pages/movie_detail_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:core/presentation/widgets/content_card_list.dart';
 import 'package:flutter/material.dart';
-import 'package:search/presentation/bloc/search_movie_bloc.dart';
+import 'package:search/presentation/bloc/movie/search_movie_bloc.dart';
 
 class SearchPage extends StatefulWidget {
   static const routeName = '/search-movie';

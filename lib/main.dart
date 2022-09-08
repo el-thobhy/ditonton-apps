@@ -7,7 +7,7 @@ import 'package:core/presentation/pages/movie_detail_page.dart';
 import 'package:core/presentation/pages/popular_movies_page.dart';
 import 'package:core/presentation/pages/popular_tv_shows_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:search/presentation/bloc/search_movie_bloc.dart';
+import 'package:search/presentation/bloc/movie/search_movie_bloc.dart';
 import 'package:search/presentation/bloc/tvshow/search_tv_bloc.dart';
 import 'package:search/presentation/pages/search_movie_page.dart';
 import 'package:core/presentation/pages/top_rated_movies_page.dart';
