@@ -1,5 +1,5 @@
 library search;
 
 export 'domain/usecases/search_movies.dart';
-export 'presentation/provider/search_notifier.dart';
-export 'presentation/pages/search_page.dart';
+export 'presentation/bloc/search_movie_bloc.dart';
+export 'presentation/pages/search_movie_page.dart';

@@ -6,7 +6,10 @@ import 'package:core/presentation/pages/home_drawer_page.dart';
 import 'package:core/presentation/pages/movie_detail_page.dart';
 import 'package:core/presentation/pages/popular_movies_page.dart';
 import 'package:core/presentation/pages/popular_tv_shows_page.dart';
-import 'package:search/presentation/pages/search_page.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:search/presentation/bloc/search_movie_bloc.dart';
+import 'package:search/presentation/bloc/tvshow/search_tv_bloc.dart';
+import 'package:search/presentation/pages/search_movie_page.dart';
 import 'package:core/presentation/pages/top_rated_movies_page.dart';
 import 'package:core/presentation/pages/top_rated_tv_shows_page.dart';
 import 'package:core/presentation/pages/tv_show_detail_page.dart';
@@ -16,7 +19,6 @@ import 'package:core/presentation/provider/movie_detail_notifier.dart';
 import 'package:core/presentation/provider/movie_list_notifier.dart';
 import 'package:core/presentation/provider/popular_movies_notifier.dart';
 import 'package:core/presentation/provider/popular_tv_shows_notifier.dart';
-import 'package:search/presentation/provider/search_notifier.dart';
 import 'package:core/presentation/provider/top_rated_movies_notifier.dart';
 import 'package:core/presentation/provider/top_rated_tv_shows_notifier.dart';
 import 'package:core/presentation/provider/tv_show_detail_notifier.dart';
@@ -26,8 +28,10 @@ import 'package:core/presentation/provider/watchlist_tv_show_notifier.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:search/presentation/pages/search_tv_page.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   di.init();
   runApp(const MyApp());
 }
@@ -51,8 +55,11 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => di.locator<TvDetailNotifier>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<SearchNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<SearchMovieBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<SearchTvBloc>(),
         ),
         ChangeNotifierProvider(
           create: (_) => di.locator<TopRatedMoviesNotifier>(),
@@ -90,13 +97,17 @@ class MyApp extends StatelessWidget {
             case HomeDrawerPage.routeName:
               return MaterialPageRoute(builder: (_) => HomeDrawerPage());
             case PopularMoviesPage.routeName:
-              return CupertinoPageRoute(builder: (_) => const PopularMoviesPage());
+              return CupertinoPageRoute(
+                  builder: (_) => const PopularMoviesPage());
             case PopularTVShowsPage.routeName:
-              return CupertinoPageRoute(builder: (_) => const PopularTVShowsPage());
+              return CupertinoPageRoute(
+                  builder: (_) => const PopularTVShowsPage());
             case TopRatedMoviesPage.routeName:
-              return CupertinoPageRoute(builder: (_) => const TopRatedMoviesPage());
+              return CupertinoPageRoute(
+                  builder: (_) => const TopRatedMoviesPage());
             case TopRatedTVShowsPage.routeName:
-              return CupertinoPageRoute(builder: (_) => const TopRatedTVShowsPage());
+              return CupertinoPageRoute(
+                  builder: (_) => const TopRatedTVShowsPage());
             case MovieDetailPage.routeName:
               final id = settings.arguments as int;
               return MaterialPageRoute(
@@ -113,6 +124,13 @@ class MyApp extends StatelessWidget {
               final activeDrawerItem = settings.arguments as DrawerItem;
               return CupertinoPageRoute(
                 builder: (_) => SearchPage(
+                  activeDrawerItem: activeDrawerItem,
+                ),
+              );
+            case SearchTvPage.routeName:
+              final activeDrawerItem = settings.arguments as DrawerItem;
+              return CupertinoPageRoute(
+                builder: (_) => SearchTvPage(
                   activeDrawerItem: activeDrawerItem,
                 ),
               );

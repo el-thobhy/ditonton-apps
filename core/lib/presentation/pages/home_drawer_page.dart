@@ -3,7 +3,8 @@ import 'package:core/common/drawer_item_enum.dart';
 import 'package:core/core.dart';
 import 'package:core/presentation/pages/home_movie_page.dart';
 import 'package:core/presentation/pages/home_tv_show_page.dart';
-import 'package:search/presentation/pages/search_page.dart';
+import 'package:search/presentation/pages/search_movie_page.dart';
+import 'package:search/presentation/pages/search_tv_page.dart';
 import 'package:core/presentation/pages/watchlist_page.dart';
 import 'package:core/presentation/provider/home_notifier.dart';
 import 'package:flutter/material.dart';
@@ -44,22 +45,32 @@ class HomeDrawerPage extends StatelessWidget {
   AppBar _buildAppBar(
     BuildContext context,
     DrawerItem activeDrawerItem,
-  ) =>
-      AppBar(
-        title: const Text('Ditonton'),
-        actions: [
-          IconButton(
-            onPressed: () {
+  ) {
+    return AppBar(
+      title: const Text('Ditonton'),
+      actions: [
+        IconButton(
+          onPressed: () {
+            if (activeDrawerItem == DrawerItem.movie) {
               Navigator.pushNamed(
                 context,
                 SearchPage.routeName,
                 arguments: activeDrawerItem,
               );
-            },
-            icon: const Icon(Icons.search),
-          )
-        ],
-      );
+            }
+            if (activeDrawerItem == DrawerItem.tvShow) {
+              Navigator.pushNamed(
+                context,
+                SearchTvPage.routeName,
+                arguments: activeDrawerItem,
+              );
+            }
+          },
+          icon: const Icon(Icons.search),
+        )
+      ],
+    );
+  }
 
   Drawer _buildDrawer(
     BuildContext context,

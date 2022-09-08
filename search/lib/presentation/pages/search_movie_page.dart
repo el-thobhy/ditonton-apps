@@ -1,16 +1,14 @@
 import 'package:core/core.dart';
 import 'package:core/common/drawer_item_enum.dart';
 import 'package:core/domain/entities/movie.dart';
-import 'package:core/domain/entities/tv_show.dart';
 import 'package:core/presentation/pages/movie_detail_page.dart';
-import 'package:core/presentation/pages/tv_show_detail_page.dart';
-import 'package:provider/provider.dart';
-import 'package:search/presentation/provider/search_notifier.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:core/presentation/widgets/content_card_list.dart';
 import 'package:flutter/material.dart';
+import 'package:search/presentation/bloc/search_movie_bloc.dart';
 
 class SearchPage extends StatefulWidget {
-  static const routeName = '/search';
+  static const routeName = '/search-movie';
 
   const SearchPage({
     Key? key,
@@ -24,13 +22,10 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
-  late bool _isAlreadySearched = false;
-
   late String _title;
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<SearchNotifier>(context);
     _title = widget.activeDrawerItem == DrawerItem.movie ? "Movie" : "TV Show";
 
     return Scaffold(
@@ -43,14 +38,8 @@ class _SearchPageState extends State<SearchPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextField(
-              onSubmitted: (query) {
-                _isAlreadySearched = true;
-
-                if (widget.activeDrawerItem == DrawerItem.movie) {
-                  provider.fetchMovieSearch(query);
-                } else {
-                  provider.fetchTVShowSearch(query);
-                }
+              onChanged: (query) {
+                context.read<SearchMovieBloc>().add(OnQueryMovieChanged(query));
               },
               decoration: const InputDecoration(
                 hintText: 'Search title',
@@ -64,39 +53,33 @@ class _SearchPageState extends State<SearchPage> {
               'Search Result',
               style: kHeading6,
             ),
-            _buildSearchResults(),
+            BlocBuilder<SearchMovieBloc, SearchMovieState>(
+              builder: (context, state) {
+                if (state is SearchMovieEmpty) {
+                  return _buildErrorMessage();
+                } else if (state is SearchMovieError) {
+                  return _buildErrorMessage();
+                } else if (state is SearchMovieLoaded) {
+                  final result = state.result;
+                  return _buildMovieCardList(result);
+                } else if (state is SearchMovieLoading) {
+                  return Container(
+                    margin: const EdgeInsets.only(top: 32.0),
+                    child: const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  );
+                }
+                return _buildErrorMessage();
+              },
+            )
           ],
         ),
       ),
     );
   }
 
-  Widget _buildSearchResults() {
-    return Consumer<SearchNotifier>(
-      builder: (ctx, data, child) {
-        if (data.state == RequestState.loading) {
-          return Container(
-            margin: const EdgeInsets.only(top: 32.0),
-            child: const Center(
-              child: CircularProgressIndicator(),
-            ),
-          );
-        } else if (data.state == RequestState.loaded && _isAlreadySearched) {
-          if (widget.activeDrawerItem == DrawerItem.movie) {
-            return _buildMovieCardList(data.moviesSearchResult);
-          } else {
-            return _buildTVShowCardList(data.tvShowsSearchResult);
-          }
-        } else {
-          return Container();
-        }
-      },
-    );
-  }
-
   Widget _buildMovieCardList(List<Movie> movies) {
-    if (movies.isEmpty) return _buildErrorMessage();
-
     return Expanded(
       child: ListView.builder(
         padding: const EdgeInsets.all(8),
@@ -109,25 +92,6 @@ class _SearchPageState extends State<SearchPage> {
           );
         },
         itemCount: movies.length,
-      ),
-    );
-  }
-
-  Widget _buildTVShowCardList(List<TvShow> tvShows) {
-    if (tvShows.isEmpty) return _buildErrorMessage();
-
-    return Expanded(
-      child: ListView.builder(
-        padding: const EdgeInsets.all(8),
-        itemBuilder: (context, index) {
-          final tvShow = tvShows[index];
-          return ContentCardList(
-            tvShow: tvShow,
-            activeDrawerItem: widget.activeDrawerItem,
-            routeName: TVShowDetailPage.routeName,
-          );
-        },
-        itemCount: tvShows.length,
       ),
     );
   }
