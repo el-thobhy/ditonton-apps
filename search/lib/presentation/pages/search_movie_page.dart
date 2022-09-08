@@ -1,10 +1,10 @@
 import 'package:core/core.dart';
 import 'package:core/common/drawer_item_enum.dart';
 import 'package:core/domain/entities/movie.dart';
-import 'package:core/presentation/pages/movie_detail_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:core/presentation/widgets/content_card_list.dart';
 import 'package:flutter/material.dart';
+import 'package:movie/presentation/pages/movie_detail_page.dart';
 import 'package:search/presentation/bloc/movie/search_movie_bloc.dart';
 
 class SearchPage extends StatefulWidget {

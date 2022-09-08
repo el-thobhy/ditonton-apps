@@ -8,7 +8,7 @@ import 'package:dartz/dartz.dart' as i3;
 import 'package:core/common/failure.dart' as i6;
 import 'package:core/domain/entities/movie.dart' as i7;
 import 'package:core/domain/repositories/movie_repository.dart' as i2;
-import 'package:core/domain/usecases/movie/get_popular_movies.dart' as i4;
+import 'package:movie/domain/usecases/movie/get_popular_movies.dart' as i4;
 import 'package:mockito/mockito.dart' as i1;
 
 // ignore_for_file: avoid_redundant_argument_values

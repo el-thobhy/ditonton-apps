@@ -8,13 +8,13 @@ import 'dart:ui' as i12;
 import 'package:core/common/state_enum.dart' as i9;
 import 'package:core/domain/entities/movie.dart' as i10;
 import 'package:core/domain/entities/movie_detail.dart' as i7;
-import 'package:core/domain/usecases/movie/get_movie_detail.dart' as i2;
-import 'package:core/domain/usecases/movie/get_movie_recommendations.dart'
+import 'package:movie/domain/usecases/movie/get_movie_detail.dart' as i2;
+import 'package:movie/domain/usecases/movie/get_movie_recommendations.dart'
     as i3;
-import 'package:core/domain/usecases/movie/get_watchlist_status_movie.dart'
+import 'package:movie/domain/usecases/movie/get_watchlist_status_movie.dart'
     as i4;
-import 'package:core/domain/usecases/movie/remove_watchlist.dart' as i6;
-import 'package:core/domain/usecases/movie/save_watchlist.dart' as i5;
+import 'package:movie/domain/usecases/movie/remove_watchlist.dart' as i6;
+import 'package:movie/domain/usecases/movie/save_watchlist.dart' as i5;
 import 'package:core/presentation/provider/movie_detail_notifier.dart'
     as i8;
 import 'package:mockito/mockito.dart' as i1;

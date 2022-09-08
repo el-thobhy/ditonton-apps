@@ -7,7 +7,7 @@ import 'dart:async' as i4;
 import 'package:dartz/dartz.dart' as i2;
 import 'package:core/common/failure.dart' as i5;
 import 'package:core/domain/entities/movie.dart' as i6;
-import 'package:core/domain/usecases/movie/get_watchlist_movies.dart'
+import 'package:movie/domain/usecases/movie/get_watchlist_movies.dart'
     as i3;
 import 'package:mockito/mockito.dart' as i1;
 

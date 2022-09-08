@@ -1,7 +1,7 @@
 import 'package:core/core.dart';
 import 'package:core/common/state_enum.dart';
 import 'package:core/domain/entities/movie.dart';
-import 'package:core/presentation/pages/movie_detail_page.dart';
+import 'package:movie/presentation/pages/movie_detail_page.dart';
 import 'package:core/presentation/provider/movie_detail_notifier.dart';
 import 'package:core/presentation/widgets/scrollable_sheet_container.dart';
 import 'package:flutter/material.dart';

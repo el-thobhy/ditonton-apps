@@ -1,5 +1,5 @@
 import 'package:core/common/state_enum.dart';
-import 'package:core/presentation/pages/top_rated_movies_page.dart';
+import 'package:movie/presentation/pages/top_rated_movies_page.dart';
 import 'package:core/presentation/provider/top_rated_movies_notifier.dart';
 import 'package:core/presentation/widgets/content_card_list.dart';
 import 'package:flutter/material.dart';

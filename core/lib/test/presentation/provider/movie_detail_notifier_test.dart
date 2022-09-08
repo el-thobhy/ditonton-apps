@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:core/domain/entities/movie.dart';
 import 'package:core/common/failure.dart';
-import 'package:core/domain/usecases/movie/get_movie_detail.dart';
-import 'package:core/domain/usecases/movie/get_movie_recommendations.dart';
-import 'package:core/domain/usecases/movie/get_watchlist_status_movie.dart';
-import 'package:core/domain/usecases/movie/remove_watchlist.dart';
-import 'package:core/domain/usecases/movie/save_watchlist.dart';
+import 'package:movie/domain/usecases/movie/get_movie_recommendations.dart';
+import 'package:movie/domain/usecases/movie/get_movie_detail.dart';
+import 'package:movie/domain/usecases/movie/get_watchlist_status_movie.dart';
+import 'package:movie/domain/usecases/movie/remove_watchlist.dart';
+import 'package:movie/domain/usecases/movie/save_watchlist.dart';
 import 'package:core/presentation/provider/movie_detail_notifier.dart';
 import 'package:core/common/state_enum.dart';
 import 'package:flutter_test/flutter_test.dart';

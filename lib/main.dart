@@ -3,14 +3,17 @@ import 'package:core/core.dart';
 import 'package:core/common/drawer_item_enum.dart';
 import 'package:ditonton_apps/injection.dart' as di;
 import 'package:core/presentation/pages/home_drawer_page.dart';
-import 'package:core/presentation/pages/movie_detail_page.dart';
-import 'package:core/presentation/pages/popular_movies_page.dart';
 import 'package:core/presentation/pages/popular_tv_shows_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie/presentation/bloc/now_playing_movie_bloc.dart';
+import 'package:movie/presentation/bloc/popular_movie_bloc.dart';
+import 'package:movie/presentation/bloc/top_rated_movie_bloc.dart';
+import 'package:movie/presentation/pages/movie_detail_page.dart';
+import 'package:movie/presentation/pages/popular_movies_page.dart';
+import 'package:movie/presentation/pages/top_rated_movies_page.dart';
 import 'package:search/presentation/bloc/movie/search_movie_bloc.dart';
 import 'package:search/presentation/bloc/tvshow/search_tv_bloc.dart';
 import 'package:search/presentation/pages/search_movie_page.dart';
-import 'package:core/presentation/pages/top_rated_movies_page.dart';
 import 'package:core/presentation/pages/top_rated_tv_shows_page.dart';
 import 'package:core/presentation/pages/tv_show_detail_page.dart';
 import 'package:core/presentation/pages/watchlist_page.dart';
@@ -43,8 +46,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (_) => di.locator<MovieListNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<NowPlayingMovieBloc>(),
         ),
         ChangeNotifierProvider(
           create: (_) => di.locator<TvListNotifier>(),
@@ -61,14 +64,14 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (_) => di.locator<SearchTvBloc>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<TopRatedMoviesNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<TopRatedMovieBloc>(),
         ),
         ChangeNotifierProvider(
           create: (_) => di.locator<TopRatedTvNotifier>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<PopularMoviesNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<PopularMovieBloc>(),
         ),
         ChangeNotifierProvider(
           create: (_) => di.locator<PopularTvNotifier>(),

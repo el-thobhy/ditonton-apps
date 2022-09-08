@@ -7,7 +7,7 @@ import 'dart:ui' as i7;
 
 import 'package:core/common/state_enum.dart' as i4;
 import 'package:core/domain/entities/movie.dart' as i5;
-import 'package:core/domain/usecases/movie/get_top_rated_movies.dart'
+import 'package:movie/domain/usecases/movie/get_top_rated_movies.dart'
     as i2;
 import 'package:core/presentation/provider/top_rated_movies_notifier.dart'
     as i3;

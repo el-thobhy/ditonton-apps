@@ -9,13 +9,13 @@ import 'package:core/common/failure.dart' as i6;
 import 'package:core/domain/entities/movie.dart' as i9;
 import 'package:core/domain/entities/movie_detail.dart' as i7;
 import 'package:core/domain/repositories/movie_repository.dart' as i2;
-import 'package:core/domain/usecases/movie/get_movie_detail.dart' as i4;
-import 'package:core/domain/usecases/movie/get_movie_recommendations.dart'
+import 'package:movie/domain/usecases/movie/get_movie_detail.dart' as i4;
+import 'package:movie/domain/usecases/movie/get_movie_recommendations.dart'
     as i8;
-import 'package:core/domain/usecases/movie/get_watchlist_status_movie.dart'
+import 'package:movie/domain/usecases/movie/get_watchlist_status_movie.dart'
     as i10;
-import 'package:core/domain/usecases/movie/remove_watchlist.dart' as i12;
-import 'package:core/domain/usecases/movie/save_watchlist.dart' as i11;
+import 'package:movie/domain/usecases/movie/remove_watchlist.dart' as i12;
+import 'package:movie/domain/usecases/movie/save_watchlist.dart' as i11;
 import 'package:mockito/mockito.dart' as i1;
 
 // ignore_for_file: avoid_redundant_argument_values

@@ -1,13 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:core/core.dart';
+import 'package:core/domain/entities/genre.dart';
 import 'package:core/domain/entities/movie_detail.dart';
 import 'package:core/presentation/provider/movie_detail_notifier.dart';
 import 'package:core/presentation/widgets/scrollable_sheet_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
-
-import '../../domain/entities/genre.dart';
 
 class MovieDetailPage extends StatefulWidget {
   static const routeName = '/detail-movie';

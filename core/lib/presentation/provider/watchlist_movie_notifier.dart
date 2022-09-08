@@ -1,6 +1,6 @@
 import 'package:core/common/state_enum.dart';
 import 'package:core/domain/entities/movie.dart';
-import 'package:core/domain/usecases/movie/get_watchlist_movies.dart';
+import 'package:movie/domain/usecases/movie/get_watchlist_movies.dart';
 import 'package:flutter/foundation.dart';
 
 class WatchlistMovieNotifier extends ChangeNotifier {

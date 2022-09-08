@@ -1,9 +1,9 @@
 import 'package:core/common/drawer_item_enum.dart';
 import 'package:core/core.dart';
-import 'package:core/presentation/pages/movie_detail_page.dart';
 import 'package:core/presentation/provider/watchlist_movie_notifier.dart';
 import 'package:core/presentation/widgets/content_card_list.dart';
 import 'package:flutter/material.dart';
+import 'package:movie/presentation/pages/movie_detail_page.dart';
 import 'package:provider/provider.dart';
 
 class WatchlistMoviesPage extends StatefulWidget {

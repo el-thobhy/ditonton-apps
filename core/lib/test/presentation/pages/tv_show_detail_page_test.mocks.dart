@@ -8,14 +8,14 @@ import 'dart:ui' as i12;
 import 'package:core/common/state_enum.dart' as i9;
 import 'package:core/domain/entities/tv_show.dart' as i10;
 import 'package:core/domain/entities/tv_show_detail.dart' as i7;
-import 'package:core/domain/usecases/tv_show/get_tv_show_detail.dart'
+import 'package:movie/domain/usecases/tv_show/get_tv_show_detail.dart'
     as i2;
-import 'package:core/domain/usecases/tv_show/get_tv_show_recommendations.dart'
+import 'package:movie/domain/usecases/tv_show/get_tv_show_recommendations.dart'
     as i3;
-import 'package:core/domain/usecases/tv_show/get_watchlist_status_tv_show.dart'
+import 'package:movie/domain/usecases/tv_show/get_watchlist_status_tv_show.dart'
     as i4;
-import 'package:core/domain/usecases/tv_show/remove_watchlist.dart' as i6;
-import 'package:core/domain/usecases/tv_show/save_watchlist.dart' as i5;
+import 'package:movie/domain/usecases/tv_show/remove_watchlist.dart' as i6;
+import 'package:movie/domain/usecases/tv_show/save_watchlist.dart' as i5;
 import 'package:core/presentation/provider/tv_show_detail_notifier.dart'
     as i8;
 import 'package:mockito/mockito.dart' as i1;

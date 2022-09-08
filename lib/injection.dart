@@ -7,13 +7,6 @@ import 'package:core/data/repositories/movie_repository_impl.dart';
 import 'package:core/data/repositories/tv_show_repository_impl.dart';
 import 'package:core/domain/repositories/movie_repository.dart';
 import 'package:core/domain/repositories/tv_show_repository.dart';
-import 'package:core/domain/usecases/tv_show/get_now_playing_tv_shows.dart';
-import 'package:core/domain/usecases/tv_show/get_popular_tv_shows.dart';
-import 'package:core/domain/usecases/tv_show/get_top_rated_tv_shows.dart';
-import 'package:core/domain/usecases/tv_show/get_tv_show_detail.dart';
-import 'package:core/domain/usecases/tv_show/get_tv_show_recommendations.dart';
-import 'package:core/domain/usecases/tv_show/get_watchlist_status_tv_show.dart';
-import 'package:core/domain/usecases/tv_show/get_watchlist_tv_shows.dart';
 import 'package:core/presentation/provider/home_notifier.dart';
 import 'package:core/presentation/provider/movie_detail_notifier.dart';
 import 'package:core/presentation/provider/movie_list_notifier.dart';
@@ -28,18 +21,29 @@ import 'package:core/presentation/provider/watchlist_tv_show_notifier.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 
-import 'package:core/domain/usecases/movie/get_movie_detail.dart';
-import 'package:core/domain/usecases/movie/get_movie_recommendations.dart';
-import 'package:core/domain/usecases/movie/get_now_playing_movies.dart';
-import 'package:core/domain/usecases/movie/get_popular_movies.dart';
-import 'package:core/domain/usecases/movie/get_top_rated_movies.dart';
-import 'package:core/domain/usecases/movie/get_watchlist_movies.dart';
-import 'package:core/domain/usecases/movie/get_watchlist_status_movie.dart';
-import 'package:core/domain/usecases/movie/remove_watchlist.dart' as movie_rm;
-import 'package:core/domain/usecases/movie/save_watchlist.dart' as movie_sv;
-import 'package:core/domain/usecases/tv_show/remove_watchlist.dart'
+import 'package:movie/domain/usecases/movie/get_movie_detail.dart';
+import 'package:movie/domain/usecases/movie/get_movie_recommendations.dart';
+import 'package:movie/domain/usecases/movie/get_now_playing_movies.dart';
+import 'package:movie/domain/usecases/movie/get_popular_movies.dart';
+import 'package:movie/domain/usecases/movie/get_top_rated_movies.dart';
+import 'package:movie/domain/usecases/movie/get_watchlist_movies.dart';
+import 'package:movie/domain/usecases/movie/get_watchlist_status_movie.dart';
+import 'package:movie/domain/usecases/movie/remove_watchlist.dart' as movie_rm;
+import 'package:movie/domain/usecases/movie/save_watchlist.dart' as movie_sv;
+import 'package:movie/domain/usecases/tv_show/get_now_playing_tv_shows.dart';
+import 'package:movie/domain/usecases/tv_show/get_popular_tv_shows.dart';
+import 'package:movie/domain/usecases/tv_show/get_top_rated_tv_shows.dart';
+import 'package:movie/domain/usecases/tv_show/get_tv_show_detail.dart';
+import 'package:movie/domain/usecases/tv_show/get_tv_show_recommendations.dart';
+import 'package:movie/domain/usecases/tv_show/get_watchlist_status_tv_show.dart';
+import 'package:movie/domain/usecases/tv_show/get_watchlist_tv_shows.dart';
+import 'package:movie/domain/usecases/tv_show/remove_watchlist.dart'
     as tv_show_rm;
-import 'package:core/domain/usecases/tv_show/save_watchlist.dart' as tv_show_sv;
+import 'package:movie/domain/usecases/tv_show/save_watchlist.dart'
+    as tv_show_sv;
+import 'package:movie/presentation/bloc/now_playing_movie_bloc.dart';
+import 'package:movie/presentation/bloc/popular_movie_bloc.dart';
+import 'package:movie/presentation/bloc/top_rated_movie_bloc.dart';
 import 'package:search/domain/usecases/search_tv_shows.dart';
 import 'package:search/search.dart';
 
@@ -47,13 +51,7 @@ final locator = GetIt.instance;
 
 void init() {
   // provider
-  locator.registerFactory(
-    () => MovieListNotifier(
-      getNowPlayingMovies: locator(),
-      getPopularMovies: locator(),
-      getTopRatedMovies: locator(),
-    ),
-  );
+  locator.registerFactory(() => NowPlayingMovieBloc(locator()));
   locator.registerFactory(
     () => TvListNotifier(
       getNowPlayingTVShows: locator(),
@@ -90,9 +88,7 @@ void init() {
     ),
   );
   locator.registerFactory(
-    () => PopularMoviesNotifier(
-      locator(),
-    ),
+    () => PopularMovieBloc(locator()),
   );
   locator.registerFactory(
     () => PopularTvNotifier(
@@ -100,9 +96,7 @@ void init() {
     ),
   );
   locator.registerFactory(
-    () => TopRatedMoviesNotifier(
-      getTopRatedMovies: locator(),
-    ),
+    () => TopRatedMovieBloc(locator()),
   );
   locator.registerFactory(
     () => TopRatedTvNotifier(

@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:core/common/failure.dart';
 import 'package:core/common/state_enum.dart';
-import 'package:core/domain/usecases/tv_show/get_tv_show_detail.dart';
-import 'package:core/domain/usecases/tv_show/get_tv_show_recommendations.dart';
-import 'package:core/domain/usecases/tv_show/get_watchlist_status_tv_show.dart';
-import 'package:core/domain/usecases/tv_show/remove_watchlist.dart';
-import 'package:core/domain/usecases/tv_show/save_watchlist.dart';
+import 'package:movie/domain/usecases/tv_show/get_tv_show_detail.dart';
+import 'package:movie/domain/usecases/tv_show/get_tv_show_recommendations.dart';
+import 'package:movie/domain/usecases/tv_show/get_watchlist_status_tv_show.dart';
+import 'package:movie/domain/usecases/tv_show/remove_watchlist.dart';
+import 'package:movie/domain/usecases/tv_show/save_watchlist.dart';
 import 'package:core/presentation/provider/tv_show_detail_notifier.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';

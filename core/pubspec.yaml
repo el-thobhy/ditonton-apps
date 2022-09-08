@@ -29,6 +29,9 @@ dependencies:
   search:
     path: ../search
 
+  movie:
+    path: ../movie
+
 dev_dependencies:
   flutter_lints: ^2.0.0
 

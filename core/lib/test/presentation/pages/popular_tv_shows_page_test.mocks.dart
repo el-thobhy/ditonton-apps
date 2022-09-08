@@ -7,7 +7,7 @@ import 'dart:ui' as i7;
 
 import 'package:core/common/state_enum.dart' as i4;
 import 'package:core/domain/entities/tv_show.dart' as i5;
-import 'package:core/domain/usecases/tv_show/get_popular_tv_shows.dart'
+import 'package:movie/domain/usecases/tv_show/get_popular_tv_shows.dart'
     as i2;
 import 'package:core/presentation/provider/popular_tv_shows_notifier.dart'
     as i3;

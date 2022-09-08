@@ -1,8 +1,8 @@
 import 'package:core/common/state_enum.dart';
 import 'package:core/domain/entities/tv_show.dart';
-import 'package:core/domain/usecases/tv_show/get_now_playing_tv_shows.dart';
-import 'package:core/domain/usecases/tv_show/get_popular_tv_shows.dart';
-import 'package:core/domain/usecases/tv_show/get_top_rated_tv_shows.dart';
+import 'package:movie/domain/usecases/tv_show/get_now_playing_tv_shows.dart';
+import 'package:movie/domain/usecases/tv_show/get_popular_tv_shows.dart';
+import 'package:movie/domain/usecases/tv_show/get_top_rated_tv_shows.dart';
 import 'package:flutter/foundation.dart';
 
 class TvListNotifier extends ChangeNotifier {
