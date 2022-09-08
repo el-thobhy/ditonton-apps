@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 import '../../domain/entities/genre.dart';
 
 class MovieDetailPage extends StatefulWidget {
-  static const ROUTE_NAME = '/detail-movie';
+  static const routeName = '/detail-movie';
 
   const MovieDetailPage({Key? key, required this.id}) : super(key: key);
 
@@ -66,7 +66,7 @@ class DetailContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScrollableSheetContainer(
-      backgroundUrl: '$BASE_IMAGE_URL${movie.posterPath}',
+      backgroundUrl: '$baseImageUrl${movie.posterPath}',
       scrollableContents: [
         Text(
           movie.title,
@@ -153,7 +153,7 @@ class DetailContent extends StatelessWidget {
                         onTap: () {
                           Navigator.pushReplacementNamed(
                             context,
-                            MovieDetailPage.ROUTE_NAME,
+                            MovieDetailPage.routeName,
                             arguments: movieRecoms.id,
                           );
                         },
@@ -163,7 +163,7 @@ class DetailContent extends StatelessWidget {
                           ),
                           child: CachedNetworkImage(
                             imageUrl:
-                                '$BASE_IMAGE_URL${movieRecoms.posterPath}',
+                                '$baseImageUrl${movieRecoms.posterPath}',
                             placeholder: (context, url) => const Padding(
                               padding: EdgeInsets.symmetric(
                                   vertical: 8.0, horizontal: 12.0),

@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class TopRatedMoviesPage extends StatefulWidget {
-  static const ROUTE_NAME = '/top-rated-movie';
+  static const routeName = '/top-rated-movie';
 
   const TopRatedMoviesPage({Key? key}) : super(key: key);
 
@@ -45,7 +45,7 @@ class _TopRatedMoviesPageState extends State<TopRatedMoviesPage> {
 
                   return ContentCardList(
                     activeDrawerItem: DrawerItem.movie,
-                    routeName: MovieDetailPage.ROUTE_NAME,
+                    routeName: MovieDetailPage.routeName,
                     movie: movie,
                   );
                 },

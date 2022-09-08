@@ -67,8 +67,9 @@ class ContentCardList extends StatelessWidget {
                   bottom: 16,
                 ),
                 child: ClipRRect(
+                  borderRadius: const BorderRadius.all(Radius.circular(8)),
                   child: CachedNetworkImage(
-                    imageUrl: "$BASE_IMAGE_URL${_getPosterPath()}",
+                    imageUrl: "$baseImageUrl${_getPosterPath()}",
                     width: 80,
                     placeholder: (context, url) => const Padding(
                       padding:
@@ -79,7 +80,6 @@ class ContentCardList extends StatelessWidget {
                     ),
                     errorWidget: (context, url, error) => const Icon(Icons.error),
                   ),
-                  borderRadius: const BorderRadius.all(Radius.circular(8)),
                 ),
               ),
             ],

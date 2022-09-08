@@ -56,7 +56,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
             SubHeading(
               title: 'Popular Movies',
               onTap: () =>
-                  Navigator.pushNamed(context, PopularMoviesPage.ROUTE_NAME),
+                  Navigator.pushNamed(context, PopularMoviesPage.routeName),
             ),
             Consumer<MovieListNotifier>(builder: (context, data, child) {
               final state = data.popularMoviesState;
@@ -110,7 +110,7 @@ class MovieList extends StatelessWidget {
           final movie = movies[index];
           return CardImageFull(
             activeDrawerItem: DrawerItem.movie,
-            routeNameDestination: MovieDetailPage.ROUTE_NAME,
+            routeNameDestination: MovieDetailPage.routeName,
             movie: movie,
           );
         },

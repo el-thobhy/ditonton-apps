@@ -4,7 +4,7 @@ import 'package:core/presentation/pages/watchlist_tv_shows_page.dart';
 import 'package:flutter/material.dart';
 
 class WatchlistPage extends StatelessWidget {
-  static const ROUTE_NAME = '/watchlist';
+  static const routeName = '/watchlist';
 
   const WatchlistPage({Key? key}) : super(key: key);
 
@@ -30,9 +30,9 @@ class WatchlistPage extends StatelessWidget {
             ),
           ];
         },
-        body: TabBarView(
+        body: const TabBarView(
           children: <Widget>[
-            const WatchlistMoviesPage(),
+            WatchlistMoviesPage(),
             WatchlistTvPage(),
           ],
         ),

@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class HomeDrawerPage extends StatelessWidget {
-  static const ROUTE_NAME = '/home';
+  static const routeName = '/home';
 
   final GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
 
@@ -52,7 +52,7 @@ class HomeDrawerPage extends StatelessWidget {
             onPressed: () {
               Navigator.pushNamed(
                 context,
-                SearchPage.ROUTE_NAME,
+                SearchPage.routeName,
                 arguments: activeDrawerItem,
               );
             },
@@ -101,13 +101,13 @@ class HomeDrawerPage extends StatelessWidget {
               title: const Text('Watchlist'),
               onTap: () {
                 Navigator.pop(context);
-                Navigator.pushNamed(context, WatchlistPage.ROUTE_NAME);
+                Navigator.pushNamed(context, WatchlistPage.routeName);
               },
             ),
             ListTile(
               onTap: () {
                 Navigator.pop(context);
-                Navigator.pushNamed(context, AboutPage.ROUTE_NAME);
+                Navigator.pushNamed(context, AboutPage.routeName);
               },
               leading: const Icon(Icons.info_outline),
               title: const Text('About'),

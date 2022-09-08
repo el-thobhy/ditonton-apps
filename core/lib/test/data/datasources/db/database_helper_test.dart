@@ -12,10 +12,10 @@ void main() {
   });
 
   final testMovieTableId = testMovieTable.id;
-  final futureMovieId = (_) async => testMovieTableId;
+  futureMovieId(_) async => testMovieTableId;
 
   final testTVShowTableId = testTVShowTable.id;
-  final futureTVShowInt = (_) async => testTVShowTableId;
+  futureTVShowInt(_) async => testTVShowTableId;
 
   group('Movie test on db', () {
     test('should return movie id when inserting new movie', () async {

@@ -56,7 +56,7 @@ class _HomeTvPageState extends State<HomeTvPage> {
             SubHeading(
               title: 'Popular Tv Show',
               onTap: () =>
-                  Navigator.pushNamed(context, PopularTVShowsPage.ROUTE_NAME),
+                  Navigator.pushNamed(context, PopularTVShowsPage.routeName),
             ),
             Consumer<TvListNotifier>(builder: (context, data, child) {
               final state = data.popularTVShowsState;

@@ -45,7 +45,7 @@ class _WatchlistMoviesPageState extends State<WatchlistMoviesPage> {
 
                 return ContentCardList(
                   activeDrawerItem: DrawerItem.movie,
-                  routeName: MovieDetailPage.ROUTE_NAME,
+                  routeName: MovieDetailPage.routeName,
                   movie: movie,
                 );
               },

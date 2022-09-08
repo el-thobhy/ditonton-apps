@@ -11,7 +11,7 @@ import 'package:provider/provider.dart';
 import '../../domain/entities/genre.dart';
 
 class TVShowDetailPage extends StatefulWidget {
-  static const ROUTE_NAME = '/detail-tvshow';
+  static const routeName = '/detail-tvshow';
 
   const TVShowDetailPage({Key? key, required this.id}) : super(key: key);
 
@@ -65,7 +65,7 @@ class DetailContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScrollableSheetContainer(
-      backgroundUrl: '$BASE_IMAGE_URL${tvShow.posterPath}',
+      backgroundUrl: '$baseImageUrl${tvShow.posterPath}',
       scrollableContents: [
         Text(
           tvShow.name,
@@ -161,7 +161,7 @@ class DetailContent extends StatelessWidget {
                         onTap: () {
                           Navigator.pushReplacementNamed(
                             context,
-                            TVShowDetailPage.ROUTE_NAME,
+                            TVShowDetailPage.routeName,
                             arguments: tvShowRecoms.id,
                           );
                         },
@@ -171,7 +171,7 @@ class DetailContent extends StatelessWidget {
                           ),
                           child: CachedNetworkImage(
                             imageUrl:
-                                '$BASE_IMAGE_URL${tvShowRecoms.posterPath}',
+                                '$baseImageUrl${tvShowRecoms.posterPath}',
                             placeholder: (context, url) => const Padding(
                               padding: EdgeInsets.symmetric(
                                   vertical: 8.0, horizontal: 12.0),
@@ -227,7 +227,7 @@ class DetailContent extends StatelessWidget {
                                   )
                                 : CachedNetworkImage(
                                     imageUrl:
-                                        '$BASE_IMAGE_URL${season.posterPath}',
+                                        '$baseImageUrl${season.posterPath}',
                                     placeholder: (context, url) => const Center(
                                       child: CircularProgressIndicator(),
                                     ),

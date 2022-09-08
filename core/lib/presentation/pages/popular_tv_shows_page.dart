@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class PopularTVShowsPage extends StatefulWidget {
-  static const ROUTE_NAME = '/popular-tvshow';
+  static const routeName = '/popular-tvshow';
 
   const PopularTVShowsPage({Key? key}) : super(key: key);
 

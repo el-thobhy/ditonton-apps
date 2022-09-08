@@ -40,7 +40,7 @@ class CardImageFull extends StatelessWidget {
         child: ClipRRect(
           borderRadius: const BorderRadius.all(Radius.circular(16)),
           child: CachedNetworkImage(
-            imageUrl: '$BASE_IMAGE_URL$posterPath',
+            imageUrl: '$baseImageUrl$posterPath',
             placeholder: (context, url) => const Padding(
               padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
               child: Center(

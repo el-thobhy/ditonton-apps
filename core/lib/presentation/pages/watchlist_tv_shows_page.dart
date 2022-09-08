@@ -45,7 +45,7 @@ class _WatchlistTvPageState extends State<WatchlistTvPage> {
 
                 return ContentCardList(
                   activeDrawerItem: DrawerItem.tvShow,
-                  routeName: TVShowDetailPage.ROUTE_NAME,
+                  routeName: TVShowDetailPage.routeName,
                   tvShow: tvShow,
                 );
               },

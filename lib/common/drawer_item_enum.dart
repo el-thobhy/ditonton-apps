@@ -1,1 +1,0 @@
-enum DrawerItem { movie, tvShow }

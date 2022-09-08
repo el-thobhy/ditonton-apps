@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class SearchPage extends StatelessWidget {
-  static const ROUTE_NAME = '/search';
+  static const routeName = '/search';
 
   SearchPage({
     Key? key,
@@ -98,7 +98,7 @@ class SearchPage extends StatelessWidget {
           return ContentCardList(
             movie: movie,
             activeDrawerItem: activeDrawerItem,
-            routeName: MovieDetailPage.ROUTE_NAME,
+            routeName: MovieDetailPage.routeName,
           );
         },
         itemCount: movies.length,
