@@ -14,10 +14,10 @@ class HomeTvPage extends StatefulWidget {
   const HomeTvPage({Key? key}) : super(key: key);
 
   @override
-  _HomeTvPageState createState() => _HomeTvPageState();
+  HomeTvPageState createState() => HomeTvPageState();
 }
 
-class _HomeTvPageState extends State<HomeTvPage> {
+class HomeTvPageState extends State<HomeTvPage> {
   @override
   void initState() {
     super.initState();
@@ -107,11 +107,11 @@ class TvList extends StatelessWidget {
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          final _tvShow = tvShows[index];
+          final tvShow = tvShows[index];
           return CardImageFull(
             activeDrawerItem: DrawerItem.tvShow,
             routeNameDestination: TVShowDetailPage.routeName,
-            tvShow: _tvShow,
+            tvShow: tvShow,
           );
         },
         itemCount: tvShows.length,

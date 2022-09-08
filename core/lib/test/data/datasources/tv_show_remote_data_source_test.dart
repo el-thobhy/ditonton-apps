@@ -29,7 +29,7 @@ void main() {
     test('should return list of TVShow Model when the response code is 200',
         () async {
       // arrange
-      when(mockHttpClient.get(Uri.parse('$baseUrl/tv/on_the_air?$baseUrl')))
+      when(mockHttpClient.get(Uri.parse('$baseUrl/tv/on_the_air?$apiKey')))
           .thenAnswer((_) async => http.Response(
                   readJson('dummy_data/on_the_air.json'), 200,
                   headers: {

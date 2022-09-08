@@ -29,8 +29,8 @@ void main() {
       });
   });
 
-  final testQueryMovie = 'spiderman';
-  final testQueryTVShow = 'squid game';
+  const testQueryMovie = 'spiderman';
+  const testQueryTVShow = 'squid game';
 
   group('search movies', () {
     test('should change state to loading when usecase is called', () async {
@@ -59,7 +59,7 @@ void main() {
     test('should return error when data is unsuccessful', () async {
       // arrange
       when(mockSearchMovies.execute(testQueryMovie))
-          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+          .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
       // act
       await provider.fetchMovieSearch(testQueryMovie);
       // assert
@@ -96,7 +96,7 @@ void main() {
     test('should return error when data is unsuccessful', () async {
       // arrange
       when(mockSearchTVShows.execute(testQueryTVShow))
-          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+          .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
       // act
       await provider.fetchTVShowSearch(testQueryTVShow);
       // assert

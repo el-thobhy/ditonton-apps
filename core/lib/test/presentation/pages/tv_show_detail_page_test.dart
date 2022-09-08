@@ -21,7 +21,7 @@ void main() {
     mockNotifier = MockTVShowDetailNotifier();
   });
 
-  Widget _makeTestableWidget(Widget body) {
+  Widget makeTestableWidget(Widget body) {
     return ChangeNotifierProvider<TvDetailNotifier>.value(
       value: mockNotifier,
       child: MaterialApp(
@@ -38,7 +38,7 @@ void main() {
     when(mockNotifier.tvShowRecommendations).thenReturn(<TvShow>[]);
     when(mockNotifier.isAddedToWatchlist).thenReturn(false);
 
-    await tester.pumpWidget(_makeTestableWidget(const TVShowDetailPage(id: 1)));
+    await tester.pumpWidget(makeTestableWidget(const TVShowDetailPage(id: 1)));
 
     expect(find.text('Watchlist'), findsOneWidget);
     expect(find.text('Overview'), findsOneWidget);
@@ -62,7 +62,7 @@ void main() {
 
     final watchlistButtonIcon = find.byIcon(Icons.add);
 
-    await tester.pumpWidget(_makeTestableWidget(const TVShowDetailPage(id: 1)));
+    await tester.pumpWidget(makeTestableWidget(const TVShowDetailPage(id: 1)));
 
     expect(watchlistButtonIcon, findsOneWidget);
   });
@@ -78,7 +78,7 @@ void main() {
 
     final watchlistButtonIcon = find.byIcon(Icons.check);
 
-    await tester.pumpWidget(_makeTestableWidget(const TVShowDetailPage(id: 1)));
+    await tester.pumpWidget(makeTestableWidget(const TVShowDetailPage(id: 1)));
 
     expect(watchlistButtonIcon, findsOneWidget);
   });
@@ -96,7 +96,7 @@ void main() {
 
     final watchlistButton = find.byType(ElevatedButton);
 
-    await tester.pumpWidget(_makeTestableWidget(const TVShowDetailPage(id: 1)));
+    await tester.pumpWidget(makeTestableWidget(const TVShowDetailPage(id: 1)));
 
     expect(find.byIcon(Icons.add), findsOneWidget);
 
@@ -119,7 +119,7 @@ void main() {
 
     final watchlistButton = find.byType(ElevatedButton);
 
-    await tester.pumpWidget(_makeTestableWidget(const TVShowDetailPage(id: 1)));
+    await tester.pumpWidget(makeTestableWidget(const TVShowDetailPage(id: 1)));
 
     expect(find.byIcon(Icons.add), findsOneWidget);
 

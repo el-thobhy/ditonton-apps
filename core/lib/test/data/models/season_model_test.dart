@@ -2,7 +2,7 @@ import 'package:core/data/models/season_model.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 main() {
-  final testSeasonModel = SeasonModel(
+  const testSeasonModel = SeasonModel(
     id: 1,
     name: 'season',
     posterPath: 'poster',

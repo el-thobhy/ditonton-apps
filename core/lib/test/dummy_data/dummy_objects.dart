@@ -10,7 +10,7 @@ import 'package:core/domain/entities/movie.dart';
 import 'package:core/domain/entities/movie_detail.dart';
 import 'package:core/domain/entities/tv_show.dart';
 
-final testMovie = Movie(
+const testMovie = Movie(
   adult: false,
   backdropPath: '/muth4OYamXf41G2evdrLEg8d3om.jpg',
   genreIds: [14, 28],
@@ -29,7 +29,7 @@ final testMovie = Movie(
 
 final testMovieList = [testMovie];
 
-final testMovieDetail = MovieDetail(
+const testMovieDetail = MovieDetail(
   adult: false,
   backdropPath: 'backdropPath',
   genres: [Genre(id: 1, name: 'Action')],
@@ -44,14 +44,14 @@ final testMovieDetail = MovieDetail(
   voteCount: 1,
 );
 
-final testWatchlistMovie = Movie.watchlist(
+const testWatchlistMovie = Movie.watchlist(
   id: 1,
   title: 'title',
   posterPath: 'posterPath',
   overview: 'overview',
 );
 
-final testMovieTable = MovieTable(
+const testMovieTable = MovieTable(
   id: 1,
   title: 'title',
   posterPath: 'posterPath',
@@ -65,7 +65,7 @@ final testMovieMap = {
   'title': 'title',
 };
 
-final testTVShowModel = TvModel(
+const testTVShowModel = TvModel(
   backdropPath: "/oC9SgtJTDCEpWnTBtVGoAvjl5hb.jpg",
   firstAirDate: "2006-09-18",
   genreIds: [10767],
@@ -90,7 +90,7 @@ final testTVShowList = <TvShow>[testTVShow];
 
 final testTVShowResponse = TvResponse(tvList: testTVShowModelList);
 
-final testTVShowDetailResponse = TvDetailResponse(
+const testTVShowDetailResponse = TvDetailResponse(
   backdropPath: '',
   firstAirDate: '',
   genres: [GenreModel(id: 1, name: 'Action')],

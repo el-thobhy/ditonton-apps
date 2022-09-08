@@ -12,10 +12,10 @@ class PopularTVShowsPage extends StatefulWidget {
   const PopularTVShowsPage({Key? key}) : super(key: key);
 
   @override
-  _PopularTVShowsPageState createState() => _PopularTVShowsPageState();
+  PopularTVShowsPageState createState() => PopularTVShowsPageState();
 }
 
-class _PopularTVShowsPageState extends State<PopularTVShowsPage> {
+class PopularTVShowsPageState extends State<PopularTVShowsPage> {
   @override
   void initState() {
     super.initState();

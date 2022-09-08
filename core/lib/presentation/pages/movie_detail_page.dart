@@ -17,10 +17,10 @@ class MovieDetailPage extends StatefulWidget {
   final int id;
 
   @override
-  _MovieDetailPageState createState() => _MovieDetailPageState();
+  MovieDetailPageState createState() => MovieDetailPageState();
 }
 
-class _MovieDetailPageState extends State<MovieDetailPage> {
+class MovieDetailPageState extends State<MovieDetailPage> {
   @override
   void initState() {
     super.initState();
@@ -73,7 +73,7 @@ class DetailContent extends StatelessWidget {
           style: kHeading5,
         ),
         ElevatedButton(
-          onPressed: () async {
+          onPressed: ([bool mounted = true]) async {
             if (!provider.isAddedToWatchlist) {
               await provider.addWatchlist(movie);
             } else {
@@ -84,6 +84,7 @@ class DetailContent extends StatelessWidget {
 
             if (message == 'Added to Watchlist' ||
                 message == 'Removed from Watchlist') {
+              if (!mounted) return;
               ScaffoldMessenger.of(context)
                   .showSnackBar(SnackBar(content: Text(message)));
             } else {
@@ -191,7 +192,7 @@ class DetailContent extends StatelessWidget {
   String _showGenres(List<Genre> genres) {
     String result = '';
     for (var genre in genres) {
-      result += genre.name + ', ';
+      result += '${genre.name}, ';
     }
 
     if (result.isEmpty) {

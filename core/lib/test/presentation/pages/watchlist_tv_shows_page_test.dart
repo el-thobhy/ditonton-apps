@@ -1,4 +1,3 @@
-import 'package:core/common/constants.dart';
 import 'package:core/common/state_enum.dart';
 import 'package:core/domain/entities/tv_show.dart';
 import 'package:core/presentation/pages/watchlist_tv_shows_page.dart';
@@ -21,7 +20,7 @@ void main() {
     mockNotifier = MockWatchlistTVShowNotifier();
   });
 
-  Widget _makeTestableWidget(Widget body) {
+  Widget makeTestableWidget(Widget body) {
     return ChangeNotifierProvider<WatchlistTvNotifier>.value(
       value: mockNotifier,
       child: MaterialApp(
@@ -36,7 +35,7 @@ void main() {
       when(mockNotifier.watchlistState).thenReturn(RequestState.loaded);
       when(mockNotifier.watchlistTv).thenReturn(testTVShowList);
 
-      await tester.pumpWidget(_makeTestableWidget(WatchlistTvPage()));
+      await tester.pumpWidget(makeTestableWidget(const WatchlistTvPage()));
 
       expect(find.byType(ContentCardList), findsWidgets);
     });
@@ -46,7 +45,7 @@ void main() {
       when(mockNotifier.watchlistState).thenReturn(RequestState.loaded);
       when(mockNotifier.watchlistTv).thenReturn(<TvShow>[]);
 
-      await tester.pumpWidget(_makeTestableWidget(WatchlistTvPage()));
+      await tester.pumpWidget(makeTestableWidget(const WatchlistTvPage()));
 
       expect(find.text('No watchlist tv show yet!'), findsOneWidget);
     });
@@ -55,7 +54,7 @@ void main() {
         (WidgetTester tester) async {
       when(mockNotifier.watchlistState).thenReturn(RequestState.loading);
 
-      await tester.pumpWidget(_makeTestableWidget(WatchlistTvPage()));
+      await tester.pumpWidget(makeTestableWidget(const WatchlistTvPage()));
 
       expect(find.byType(CircularProgressIndicator), findsOneWidget);
     });

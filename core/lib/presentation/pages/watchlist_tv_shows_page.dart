@@ -10,10 +10,10 @@ class WatchlistTvPage extends StatefulWidget {
   const WatchlistTvPage({Key? key}) : super(key: key);
 
   @override
-  _WatchlistTvPageState createState() => _WatchlistTvPageState();
+  WatchlistTvPageState createState() => WatchlistTvPageState();
 }
 
-class _WatchlistTvPageState extends State<WatchlistTvPage> {
+class WatchlistTvPageState extends State<WatchlistTvPage> {
   @override
   void initState() {
     super.initState();

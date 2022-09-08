@@ -18,10 +18,10 @@ class TVShowDetailPage extends StatefulWidget {
   final int id;
 
   @override
-  _TVShowDetailPageState createState() => _TVShowDetailPageState();
+  TVShowDetailPageState createState() => TVShowDetailPageState();
 }
 
-class _TVShowDetailPageState extends State<TVShowDetailPage> {
+class TVShowDetailPageState extends State<TVShowDetailPage> {
   @override
   void initState() {
     super.initState();
@@ -72,7 +72,7 @@ class DetailContent extends StatelessWidget {
           style: kHeading5,
         ),
         ElevatedButton(
-          onPressed: () async {
+          onPressed: ([bool mounted = true]) async {
             if (!provider.isAddedToWatchlist) {
               await provider.addWatchlist(tvShow);
             } else {
@@ -83,6 +83,7 @@ class DetailContent extends StatelessWidget {
 
             if (message == 'Added to Watchlist' ||
                 message == 'Removed from Watchlist') {
+              if (!mounted) return;
               ScaffoldMessenger.of(context)
                   .showSnackBar(SnackBar(content: Text(message)));
             } else {
@@ -98,7 +99,9 @@ class DetailContent extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              provider.isAddedToWatchlist ? const Icon(Icons.check) : const Icon(Icons.add),
+              provider.isAddedToWatchlist
+                  ? const Icon(Icons.check)
+                  : const Icon(Icons.add),
               const SizedBox(width: 6.0),
               const Text('Watchlist'),
               const SizedBox(width: 4.0),
@@ -129,10 +132,10 @@ class DetailContent extends StatelessWidget {
         ),
         const SizedBox(height: 12.0),
         Text(
-          'Total Episodes: ' + tvShow.numberOfEpisodes.toString(),
+          'Total Episodes: ${tvShow.numberOfEpisodes}',
         ),
         Text(
-          'Total Seasons: ' + tvShow.numberOfSeasons.toString(),
+          'Total Seasons: ${tvShow.numberOfSeasons}',
         ),
         const SizedBox(height: 16),
         Text(
@@ -170,8 +173,7 @@ class DetailContent extends StatelessWidget {
                             Radius.circular(8),
                           ),
                           child: CachedNetworkImage(
-                            imageUrl:
-                                '$baseImageUrl${tvShowRecoms.posterPath}',
+                            imageUrl: '$baseImageUrl${tvShowRecoms.posterPath}',
                             placeholder: (context, url) => const Padding(
                               padding: EdgeInsets.symmetric(
                                   vertical: 8.0, horizontal: 12.0),
@@ -266,7 +268,7 @@ class DetailContent extends StatelessWidget {
   String _showGenres(List<Genre> genres) {
     String result = '';
     for (var genre in genres) {
-      result += genre.name + ', ';
+      result += '${genre.name}, ';
     }
 
     if (result.isEmpty) {

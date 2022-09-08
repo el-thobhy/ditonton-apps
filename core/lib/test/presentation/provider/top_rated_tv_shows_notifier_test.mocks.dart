@@ -2,15 +2,15 @@
 // in ditonton_apps/test/presentation/provider/top_rated_tv_shows_notifier_test.dart.
 // Do not manually edit this file.
 
-import 'dart:async' as _i5;
+import 'dart:async' as i5;
 
-import 'package:dartz/dartz.dart' as _i3;
-import 'package:core/common/failure.dart' as _i6;
-import 'package:core/domain/entities/tv_show.dart' as _i7;
-import 'package:core/domain/repositories/tv_show_repository.dart' as _i2;
+import 'package:dartz/dartz.dart' as i3;
+import 'package:core/common/failure.dart' as i6;
+import 'package:core/domain/entities/tv_show.dart' as i7;
+import 'package:core/domain/repositories/tv_show_repository.dart' as i2;
 import 'package:core/domain/usecases/tv_show/get_top_rated_tv_shows.dart'
-    as _i4;
-import 'package:mockito/mockito.dart' as _i1;
+    as i4;
+import 'package:mockito/mockito.dart' as i1;
 
 // ignore_for_file: avoid_redundant_argument_values
 // ignore_for_file: avoid_setters_without_getters
@@ -21,30 +21,28 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: camel_case_types
 
-class _FakeTVShowRepository_0 extends _i1.Fake implements _i2.TvRepository {
+class _FakeTVShowRepository_0 extends i1.Fake implements i2.TvRepository {
 }
 
-class _FakeEither_1<L, R> extends _i1.Fake implements _i3.Either<L, R> {}
+class _FakeEither_1<L, R> extends i1.Fake implements i3.Either<L, R> {}
 
 /// A class which mocks [GetTopRatedTVShows].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockGetTopRatedTVShows extends _i1.Mock
-    implements _i4.GetTopRatedTv {
+class MockGetTopRatedTVShows extends i1.Mock
+    implements i4.GetTopRatedTv {
   MockGetTopRatedTVShows() {
-    _i1.throwOnMissingStub(this);
+    i1.throwOnMissingStub(this);
   }
 
   @override
-  _i2.TvRepository get repository =>
+  i2.TvRepository get repository =>
       (super.noSuchMethod(Invocation.getter(#repository),
-          returnValue: _FakeTVShowRepository_0()) as _i2.TvRepository);
+          returnValue: _FakeTVShowRepository_0()) as i2.TvRepository);
   @override
-  _i5.Future<_i3.Either<_i6.Failure, List<_i7.TvShow>>> execute() =>
+  i5.Future<i3.Either<i6.Failure, List<i7.TvShow>>> execute() =>
       (super.noSuchMethod(Invocation.method(#execute, []),
-          returnValue: Future<_i3.Either<_i6.Failure, List<_i7.TvShow>>>.value(
-              _FakeEither_1<_i6.Failure, List<_i7.TvShow>>())) as _i5
-          .Future<_i3.Either<_i6.Failure, List<_i7.TvShow>>>);
-  @override
-  String toString() => super.toString();
+          returnValue: Future<i3.Either<i6.Failure, List<i7.TvShow>>>.value(
+              _FakeEither_1<i6.Failure, List<i7.TvShow>>())) as i5
+          .Future<i3.Either<i6.Failure, List<i7.TvShow>>>);
 }

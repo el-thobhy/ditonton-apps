@@ -19,7 +19,7 @@ void main() {
     mockNotifier = MockPopularTVShowsNotifier();
   });
 
-  Widget _makeTestableWidget(Widget body) {
+  Widget makeTestableWidget(Widget body) {
     return ChangeNotifierProvider<PopularTvNotifier>.value(
       value: mockNotifier,
       child: MaterialApp(
@@ -35,7 +35,7 @@ void main() {
     final progressBarFinder = find.byType(CircularProgressIndicator);
     final centerFinder = find.byType(Center);
 
-    await tester.pumpWidget(_makeTestableWidget(PopularTVShowsPage()));
+    await tester.pumpWidget(makeTestableWidget(const PopularTVShowsPage()));
 
     expect(centerFinder, findsOneWidget);
     expect(progressBarFinder, findsOneWidget);
@@ -46,7 +46,7 @@ void main() {
     when(mockNotifier.state).thenReturn(RequestState.loaded);
     when(mockNotifier.tvShows).thenReturn(testTVShowList);
 
-    await tester.pumpWidget(_makeTestableWidget(PopularTVShowsPage()));
+    await tester.pumpWidget(makeTestableWidget(const PopularTVShowsPage()));
 
     expect(find.byType(AppBar), findsOneWidget);
     expect(find.text('Popular TVShows'), findsOneWidget);
@@ -59,7 +59,7 @@ void main() {
 
     final listViewFinder = find.byType(ListView);
 
-    await tester.pumpWidget(_makeTestableWidget(PopularTVShowsPage()));
+    await tester.pumpWidget(makeTestableWidget(const PopularTVShowsPage()));
 
     expect(listViewFinder, findsOneWidget);
     expect(find.byType(ContentCardList), findsWidgets);
@@ -70,9 +70,9 @@ void main() {
     when(mockNotifier.state).thenReturn(RequestState.error);
     when(mockNotifier.message).thenReturn('Error message');
 
-    final textFinder = find.byKey(Key('error_message'));
+    final textFinder = find.byKey(const Key('error_message'));
 
-    await tester.pumpWidget(_makeTestableWidget(PopularTVShowsPage()));
+    await tester.pumpWidget(makeTestableWidget(const PopularTVShowsPage()));
 
     expect(textFinder, findsOneWidget);
   });

@@ -9,26 +9,33 @@ import 'package:core/presentation/widgets/content_card_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class SearchPage extends StatelessWidget {
+class SearchPage extends StatefulWidget {
   static const routeName = '/search';
 
-  SearchPage({
+  const SearchPage({
     Key? key,
     required this.activeDrawerItem,
   }) : super(key: key);
 
   final DrawerItem activeDrawerItem;
+
+  @override
+  State<SearchPage> createState() => _SearchPageState();
+}
+
+class _SearchPageState extends State<SearchPage> {
   late bool _isAlreadySearched = false;
+
   late String _title;
 
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<SearchNotifier>(context);
-    _title = activeDrawerItem == DrawerItem.movie ? "Movie" : "TV Show";
+    _title = widget.activeDrawerItem == DrawerItem.movie ? "Movie" : "TV Show";
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Search $_title\s'),
+        title: Text('Search $_title'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -39,7 +46,7 @@ class SearchPage extends StatelessWidget {
               onSubmitted: (query) {
                 _isAlreadySearched = true;
 
-                if (activeDrawerItem == DrawerItem.movie) {
+                if (widget.activeDrawerItem == DrawerItem.movie) {
                   provider.fetchMovieSearch(query);
                 } else {
                   provider.fetchTVShowSearch(query);
@@ -75,7 +82,7 @@ class SearchPage extends StatelessWidget {
             ),
           );
         } else if (data.state == RequestState.loaded && _isAlreadySearched) {
-          if (activeDrawerItem == DrawerItem.movie) {
+          if (widget.activeDrawerItem == DrawerItem.movie) {
             return _buildMovieCardList(data.moviesSearchResult);
           } else {
             return _buildTVShowCardList(data.tvShowsSearchResult);
@@ -97,7 +104,7 @@ class SearchPage extends StatelessWidget {
           final movie = movies[index];
           return ContentCardList(
             movie: movie,
-            activeDrawerItem: activeDrawerItem,
+            activeDrawerItem: widget.activeDrawerItem,
             routeName: MovieDetailPage.routeName,
           );
         },
@@ -116,7 +123,7 @@ class SearchPage extends StatelessWidget {
           final tvShow = tvShows[index];
           return ContentCardList(
             tvShow: tvShow,
-            activeDrawerItem: activeDrawerItem,
+            activeDrawerItem: widget.activeDrawerItem,
             routeName: TVShowDetailPage.routeName,
           );
         },
@@ -129,7 +136,7 @@ class SearchPage extends StatelessWidget {
         margin: const EdgeInsets.only(top: 32.0),
         child: Center(
           child: Text(
-            '$_title\s not found!',
+            '$_title not found!',
             style: kBodyText,
           ),
         ),

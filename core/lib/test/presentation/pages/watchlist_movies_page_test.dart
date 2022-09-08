@@ -20,7 +20,7 @@ void main() {
     mockNotifier = MockWatchlistMovieNotifier();
   });
 
-  Widget _makeTestableWidget(Widget body) {
+  Widget makeTestableWidget(Widget body) {
     return ChangeNotifierProvider<WatchlistMovieNotifier>.value(
       value: mockNotifier,
       child: MaterialApp(
@@ -34,7 +34,7 @@ void main() {
       when(mockNotifier.watchlistState).thenReturn(RequestState.loaded);
       when(mockNotifier.watchlistMovies).thenReturn(testMovieList);
 
-      await tester.pumpWidget(_makeTestableWidget(WatchlistMoviesPage()));
+      await tester.pumpWidget(makeTestableWidget(const WatchlistMoviesPage()));
 
       expect(find.byType(ListView), findsOneWidget);
       expect(find.byType(ContentCardList), findsWidgets);
@@ -47,7 +47,7 @@ void main() {
       when(mockNotifier.watchlistState).thenReturn(RequestState.loaded);
       when(mockNotifier.watchlistMovies).thenReturn(<Movie>[]);
 
-      await tester.pumpWidget(_makeTestableWidget(WatchlistMoviesPage()));
+      await tester.pumpWidget(makeTestableWidget(const WatchlistMoviesPage()));
 
       expect(find.text('No watchlist movie yet!'), findsOneWidget);
     });
@@ -56,7 +56,7 @@ void main() {
         (WidgetTester tester) async {
       when(mockNotifier.watchlistState).thenReturn(RequestState.loading);
 
-      await tester.pumpWidget(_makeTestableWidget(WatchlistMoviesPage()));
+      await tester.pumpWidget(makeTestableWidget(const WatchlistMoviesPage()));
 
       expect(find.byType(CircularProgressIndicator), findsOneWidget);
     });

@@ -2,17 +2,17 @@
 // in ditonton_apps/test/presentation/provider/search_notifier_test.dart.
 // Do not manually edit this file.
 
-import 'dart:async' as _i6;
+import 'dart:async' as i6;
 
-import 'package:dartz/dartz.dart' as _i3;
-import 'package:core/common/failure.dart' as _i7;
-import 'package:core/domain/entities/movie.dart' as _i8;
-import 'package:core/domain/entities/tv_show.dart' as _i10;
-import 'package:core/domain/repositories/movie_repository.dart' as _i2;
-import 'package:core/domain/repositories/tv_show_repository.dart' as _i4;
-import 'package:core/domain/usecases/movie/search_movies.dart' as _i5;
-import 'package:core/domain/usecases/tv_show/search_tv_shows.dart' as _i9;
-import 'package:mockito/mockito.dart' as _i1;
+import 'package:dartz/dartz.dart' as i3;
+import 'package:core/common/failure.dart' as i7;
+import 'package:core/domain/entities/movie.dart' as i8;
+import 'package:core/domain/entities/tv_show.dart' as i10;
+import 'package:core/domain/repositories/movie_repository.dart' as i2;
+import 'package:core/domain/repositories/tv_show_repository.dart' as i4;
+import 'package:core/domain/usecases/movie/search_movies.dart' as i5;
+import 'package:core/domain/usecases/tv_show/search_tv_shows.dart' as i9;
+import 'package:mockito/mockito.dart' as i1;
 
 // ignore_for_file: avoid_redundant_argument_values
 // ignore_for_file: avoid_setters_without_getters
@@ -23,54 +23,50 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: camel_case_types
 
-class _FakeMovieRepository_0 extends _i1.Fake implements _i2.MovieRepository {}
+class _FakeMovieRepository_0 extends i1.Fake implements i2.MovieRepository {}
 
-class _FakeEither_1<L, R> extends _i1.Fake implements _i3.Either<L, R> {}
+class _FakeEither_1<L, R> extends i1.Fake implements i3.Either<L, R> {}
 
-class _FakeTVShowRepository_2 extends _i1.Fake implements _i4.TvRepository {
+class _FakeTVShowRepository_2 extends i1.Fake implements i4.TvRepository {
 }
 
 /// A class which mocks [SearchMovies].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockSearchMovies extends _i1.Mock implements _i5.SearchMovies {
+class MockSearchMovies extends i1.Mock implements i5.SearchMovies {
   MockSearchMovies() {
-    _i1.throwOnMissingStub(this);
+    i1.throwOnMissingStub(this);
   }
 
   @override
-  _i2.MovieRepository get repository =>
+  i2.MovieRepository get repository =>
       (super.noSuchMethod(Invocation.getter(#repository),
-          returnValue: _FakeMovieRepository_0()) as _i2.MovieRepository);
+          returnValue: _FakeMovieRepository_0()) as i2.MovieRepository);
   @override
-  _i6.Future<_i3.Either<_i7.Failure, List<_i8.Movie>>> execute(String? query) =>
+  i6.Future<i3.Either<i7.Failure, List<i8.Movie>>> execute(String? query) =>
       (super.noSuchMethod(Invocation.method(#execute, [query]),
-          returnValue: Future<_i3.Either<_i7.Failure, List<_i8.Movie>>>.value(
-              _FakeEither_1<_i7.Failure, List<_i8.Movie>>())) as _i6
-          .Future<_i3.Either<_i7.Failure, List<_i8.Movie>>>);
-  @override
-  String toString() => super.toString();
+          returnValue: Future<i3.Either<i7.Failure, List<i8.Movie>>>.value(
+              _FakeEither_1<i7.Failure, List<i8.Movie>>())) as i6
+          .Future<i3.Either<i7.Failure, List<i8.Movie>>>);
 }
 
 /// A class which mocks [SearchTVShows].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockSearchTVShows extends _i1.Mock implements _i9.SearchTv {
+class MockSearchTVShows extends i1.Mock implements i9.SearchTv {
   MockSearchTVShows() {
-    _i1.throwOnMissingStub(this);
+    i1.throwOnMissingStub(this);
   }
 
   @override
-  _i4.TvRepository get repository =>
+  i4.TvRepository get repository =>
       (super.noSuchMethod(Invocation.getter(#repository),
-          returnValue: _FakeTVShowRepository_2()) as _i4.TvRepository);
+          returnValue: _FakeTVShowRepository_2()) as i4.TvRepository);
   @override
-  _i6.Future<_i3.Either<_i7.Failure, List<_i10.TvShow>>> execute(
+  i6.Future<i3.Either<i7.Failure, List<i10.TvShow>>> execute(
           String? query) =>
       (super.noSuchMethod(Invocation.method(#execute, [query]),
-          returnValue: Future<_i3.Either<_i7.Failure, List<_i10.TvShow>>>.value(
-              _FakeEither_1<_i7.Failure, List<_i10.TvShow>>())) as _i6
-          .Future<_i3.Either<_i7.Failure, List<_i10.TvShow>>>);
-  @override
-  String toString() => super.toString();
+          returnValue: Future<i3.Either<i7.Failure, List<i10.TvShow>>>.value(
+              _FakeEither_1<i7.Failure, List<i10.TvShow>>())) as i6
+          .Future<i3.Either<i7.Failure, List<i10.TvShow>>>);
 }

@@ -146,7 +146,7 @@ void main() {
   });
 
   group('Get TV Show Detail', () {
-    final tId = 1;
+    const tId = 1;
 
     test(
         'should return TV Show data when the call to remote data source is successful',
@@ -190,7 +190,7 @@ void main() {
   });
 
   group('Get TV Show Recommendations', () {
-    final tId = 1;
+    const tId = 1;
 
     test('should return data (tv show list) when the call is successful',
         () async {
@@ -235,7 +235,7 @@ void main() {
   });
 
   group('Seach TV Shows', () {
-    final tQuery = 'spiderman';
+    const tQuery = 'spiderman';
 
     test('should return movie list when call to data source is successful',
         () async {
@@ -322,7 +322,7 @@ void main() {
   group('get watchlist status', () {
     test('should return watch status whether data is found', () async {
       // arrange
-      final tId = 1;
+      const tId = 1;
       when(mockLocalDataSource.getTVShowById(tId))
           .thenAnswer((_) async => null);
       // act
