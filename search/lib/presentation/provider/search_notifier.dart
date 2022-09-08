@@ -1,9 +1,9 @@
 import 'package:core/common/state_enum.dart';
 import 'package:core/domain/entities/movie.dart';
 import 'package:core/domain/entities/tv_show.dart';
-import 'package:core/domain/usecases/movie/search_movies.dart';
-import 'package:core/domain/usecases/tv_show/search_tv_shows.dart';
 import 'package:flutter/foundation.dart';
+import 'package:search/domain/usecases/search_movies.dart';
+import 'package:search/domain/usecases/search_tv_shows.dart';
 
 class SearchNotifier extends ChangeNotifier {
   final SearchMovies searchMovies;

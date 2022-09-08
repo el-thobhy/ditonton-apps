@@ -4,10 +4,10 @@ import 'package:core/domain/entities/movie.dart';
 import 'package:core/domain/entities/tv_show.dart';
 import 'package:core/presentation/pages/movie_detail_page.dart';
 import 'package:core/presentation/pages/tv_show_detail_page.dart';
-import 'package:core/presentation/provider/search_notifier.dart';
+import 'package:provider/provider.dart';
+import 'package:search/presentation/provider/search_notifier.dart';
 import 'package:core/presentation/widgets/content_card_list.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class SearchPage extends StatefulWidget {
   static const routeName = '/search';

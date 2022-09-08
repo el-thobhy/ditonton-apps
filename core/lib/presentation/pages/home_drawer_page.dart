@@ -3,7 +3,7 @@ import 'package:core/common/drawer_item_enum.dart';
 import 'package:core/core.dart';
 import 'package:core/presentation/pages/home_movie_page.dart';
 import 'package:core/presentation/pages/home_tv_show_page.dart';
-import 'package:core/presentation/pages/search_page.dart';
+import 'package:search/presentation/pages/search_page.dart';
 import 'package:core/presentation/pages/watchlist_page.dart';
 import 'package:core/presentation/provider/home_notifier.dart';
 import 'package:flutter/material.dart';

@@ -10,8 +10,8 @@ import 'package:core/domain/entities/movie.dart' as i8;
 import 'package:core/domain/entities/tv_show.dart' as i10;
 import 'package:core/domain/repositories/movie_repository.dart' as i2;
 import 'package:core/domain/repositories/tv_show_repository.dart' as i4;
-import 'package:core/domain/usecases/movie/search_movies.dart' as i5;
-import 'package:core/domain/usecases/tv_show/search_tv_shows.dart' as i9;
+import 'package:search/domain/usecases/search_movies.dart' as i5;
+import 'package:search/domain/usecases/search_tv_shows.dart' as i9;
 import 'package:mockito/mockito.dart' as i1;
 
 // ignore_for_file: avoid_redundant_argument_values
