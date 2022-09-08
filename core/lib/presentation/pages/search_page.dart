@@ -117,7 +117,7 @@ class SearchPage extends StatelessWidget {
           return ContentCardList(
             tvShow: tvShow,
             activeDrawerItem: activeDrawerItem,
-            routeName: TVShowDetailPage.ROUTE_NAME,
+            routeName: TVShowDetailPage.routeName,
           );
         },
         itemCount: tvShows.length,

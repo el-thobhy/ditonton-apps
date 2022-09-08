@@ -1,4 +1,3 @@
-import 'package:core/common/constants.dart';
 import 'package:core/common/state_enum.dart';
 import 'package:core/domain/entities/tv_show.dart';
 import 'package:core/presentation/pages/tv_show_detail_page.dart';
@@ -39,7 +38,7 @@ void main() {
     when(mockNotifier.tvShowRecommendations).thenReturn(<TvShow>[]);
     when(mockNotifier.isAddedToWatchlist).thenReturn(false);
 
-    await tester.pumpWidget(_makeTestableWidget(TVShowDetailPage(id: 1)));
+    await tester.pumpWidget(_makeTestableWidget(const TVShowDetailPage(id: 1)));
 
     expect(find.text('Watchlist'), findsOneWidget);
     expect(find.text('Overview'), findsOneWidget);
@@ -63,7 +62,7 @@ void main() {
 
     final watchlistButtonIcon = find.byIcon(Icons.add);
 
-    await tester.pumpWidget(_makeTestableWidget(TVShowDetailPage(id: 1)));
+    await tester.pumpWidget(_makeTestableWidget(const TVShowDetailPage(id: 1)));
 
     expect(watchlistButtonIcon, findsOneWidget);
   });
@@ -79,7 +78,7 @@ void main() {
 
     final watchlistButtonIcon = find.byIcon(Icons.check);
 
-    await tester.pumpWidget(_makeTestableWidget(TVShowDetailPage(id: 1)));
+    await tester.pumpWidget(_makeTestableWidget(const TVShowDetailPage(id: 1)));
 
     expect(watchlistButtonIcon, findsOneWidget);
   });
@@ -97,7 +96,7 @@ void main() {
 
     final watchlistButton = find.byType(ElevatedButton);
 
-    await tester.pumpWidget(_makeTestableWidget(TVShowDetailPage(id: 1)));
+    await tester.pumpWidget(_makeTestableWidget(const TVShowDetailPage(id: 1)));
 
     expect(find.byIcon(Icons.add), findsOneWidget);
 
@@ -120,7 +119,7 @@ void main() {
 
     final watchlistButton = find.byType(ElevatedButton);
 
-    await tester.pumpWidget(_makeTestableWidget(TVShowDetailPage(id: 1)));
+    await tester.pumpWidget(_makeTestableWidget(const TVShowDetailPage(id: 1)));
 
     expect(find.byIcon(Icons.add), findsOneWidget);
 

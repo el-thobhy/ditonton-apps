@@ -45,7 +45,7 @@ class _PopularTVShowsPageState extends State<PopularTVShowsPage> {
 
                   return ContentCardList(
                     activeDrawerItem: DrawerItem.tvShow,
-                    routeName: TVShowDetailPage.ROUTE_NAME,
+                    routeName: TVShowDetailPage.routeName,
                     tvShow: tvShow,
                   );
                 },

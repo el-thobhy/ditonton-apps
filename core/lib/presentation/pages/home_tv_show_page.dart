@@ -73,7 +73,7 @@ class _HomeTvPageState extends State<HomeTvPage> {
             SubHeading(
               title: 'Top Rated Tv Show',
               onTap: () =>
-                  Navigator.pushNamed(context, TopRatedTVShowsPage.ROUTE_NAME),
+                  Navigator.pushNamed(context, TopRatedTVShowsPage.routeName),
             ),
             const SizedBox(height: 8.0),
             Consumer<TvListNotifier>(builder: (context, data, child) {
@@ -110,7 +110,7 @@ class TvList extends StatelessWidget {
           final _tvShow = tvShows[index];
           return CardImageFull(
             activeDrawerItem: DrawerItem.tvShow,
-            routeNameDestination: TVShowDetailPage.ROUTE_NAME,
+            routeNameDestination: TVShowDetailPage.routeName,
             tvShow: _tvShow,
           );
         },

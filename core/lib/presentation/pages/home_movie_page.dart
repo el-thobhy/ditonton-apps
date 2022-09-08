@@ -74,7 +74,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
             SubHeading(
               title: 'Top Rated Movies',
               onTap: () =>
-                  Navigator.pushNamed(context, TopRatedMoviesPage.ROUTE_NAME),
+                  Navigator.pushNamed(context, TopRatedMoviesPage.routeName),
             ),
             Consumer<MovieListNotifier>(builder: (context, data, child) {
               final state = data.topRatedMoviesState;

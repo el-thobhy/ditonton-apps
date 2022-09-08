@@ -1,4 +1,3 @@
-import 'package:core/common/constants.dart';
 import 'package:core/common/state_enum.dart';
 import 'package:core/domain/entities/movie.dart';
 import 'package:core/presentation/pages/watchlist_movies_page.dart';
