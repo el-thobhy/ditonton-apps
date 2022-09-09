@@ -18,6 +18,9 @@ dependencies:
   movie:
     path: ../movie
 
+  tvshow:
+    path: ../tvshow
+
   dartz: ^0.10.1
   provider: ^6.0.3
   flutter_bloc: ^8.1.1

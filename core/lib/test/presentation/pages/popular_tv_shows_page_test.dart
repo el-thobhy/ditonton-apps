@@ -1,5 +1,5 @@
 import 'package:core/common/state_enum.dart';
-import 'package:core/presentation/pages/popular_tv_shows_page.dart';
+import 'package:tvshow/presentation/pages/popular_tv_page.dart';
 import 'package:core/presentation/provider/popular_tv_shows_notifier.dart';
 import 'package:core/presentation/widgets/content_card_list.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +35,7 @@ void main() {
     final progressBarFinder = find.byType(CircularProgressIndicator);
     final centerFinder = find.byType(Center);
 
-    await tester.pumpWidget(makeTestableWidget(const PopularTVShowsPage()));
+    await tester.pumpWidget(makeTestableWidget(const PopularTvsPage()));
 
     expect(centerFinder, findsOneWidget);
     expect(progressBarFinder, findsOneWidget);
@@ -46,7 +46,7 @@ void main() {
     when(mockNotifier.state).thenReturn(RequestState.loaded);
     when(mockNotifier.tvShows).thenReturn(testTVShowList);
 
-    await tester.pumpWidget(makeTestableWidget(const PopularTVShowsPage()));
+    await tester.pumpWidget(makeTestableWidget(const PopularTvsPage()));
 
     expect(find.byType(AppBar), findsOneWidget);
     expect(find.text('Popular TVShows'), findsOneWidget);
@@ -59,7 +59,7 @@ void main() {
 
     final listViewFinder = find.byType(ListView);
 
-    await tester.pumpWidget(makeTestableWidget(const PopularTVShowsPage()));
+    await tester.pumpWidget(makeTestableWidget(const PopularTvsPage()));
 
     expect(listViewFinder, findsOneWidget);
     expect(find.byType(ContentCardList), findsWidgets);
@@ -72,7 +72,7 @@ void main() {
 
     final textFinder = find.byKey(const Key('error_message'));
 
-    await tester.pumpWidget(makeTestableWidget(const PopularTVShowsPage()));
+    await tester.pumpWidget(makeTestableWidget(const PopularTvsPage()));
 
     expect(textFinder, findsOneWidget);
   });

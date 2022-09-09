@@ -1,6 +1,6 @@
 import 'package:core/common/state_enum.dart';
 import 'package:core/domain/entities/tv_show.dart';
-import 'package:core/presentation/pages/tv_show_detail_page.dart';
+import 'package:tvshow/presentation/pages/tv_detail_page.dart';
 import 'package:core/presentation/provider/tv_show_detail_notifier.dart';
 import 'package:core/presentation/widgets/scrollable_sheet_container.dart';
 import 'package:flutter/material.dart';

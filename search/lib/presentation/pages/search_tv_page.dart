@@ -1,7 +1,7 @@
 import 'package:core/common/drawer_item_enum.dart';
 import 'package:core/core.dart';
 import 'package:core/domain/entities/tv_show.dart';
-import 'package:core/presentation/pages/tv_show_detail_page.dart';
+import 'package:tvshow/presentation/pages/tv_detail_page.dart';
 import 'package:core/presentation/widgets/content_card_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
