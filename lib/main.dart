@@ -4,6 +4,7 @@ import 'package:core/core.dart';
 import 'package:core/common/drawer_item_enum.dart';
 import 'package:ditonton_apps/injection.dart' as di;
 import 'package:core/presentation/pages/home_drawer_page.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie/presentation/bloc/movie_detail_bloc.dart';
 import 'package:movie/presentation/bloc/now_playing_movie_bloc.dart';
@@ -34,7 +35,7 @@ import 'package:tvshow/presentation/pages/tv_detail_page.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SSLpinning.init();
-
+  await Firebase.initializeApp();
   di.init();
   runApp(const MyApp());
 }

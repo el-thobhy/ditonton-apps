@@ -1,6 +1,7 @@
 import 'package:about/about.dart';
 import 'package:core/common/drawer_item_enum.dart';
 import 'package:core/core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:movie/presentation/pages/home_movie_page.dart';
 import 'package:search/presentation/pages/search_movie_page.dart';
 import 'package:search/presentation/pages/search_tv_page.dart';
