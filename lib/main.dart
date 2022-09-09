@@ -1,4 +1,5 @@
 import 'package:about/about.dart';
+import 'package:core/common/ssl_pinning/ssl_pinning.dart';
 import 'package:core/core.dart';
 import 'package:core/common/drawer_item_enum.dart';
 import 'package:ditonton_apps/injection.dart' as di;
@@ -30,8 +31,10 @@ import 'package:tvshow/presentation/pages/popular_tv_page.dart';
 import 'package:tvshow/presentation/pages/top_rated_tv_page.dart';
 import 'package:tvshow/presentation/pages/tv_detail_page.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await SSLpinning.init();
+
   di.init();
   runApp(const MyApp());
 }

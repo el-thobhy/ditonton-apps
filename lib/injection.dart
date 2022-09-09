@@ -1,3 +1,4 @@
+import 'package:core/common/ssl_pinning/ssl_pinning.dart';
 import 'package:core/data/datasources/db/database_helper.dart';
 import 'package:core/data/datasources/movie_local_data_source.dart';
 import 'package:core/data/datasources/movie_remote_data_source.dart';
@@ -9,7 +10,6 @@ import 'package:core/domain/repositories/movie_repository.dart';
 import 'package:core/domain/repositories/tv_show_repository.dart';
 import 'package:core/presentation/provider/home_notifier.dart';
 import 'package:get_it/get_it.dart';
-import 'package:http/http.dart' as http;
 
 import 'package:movie/domain/usecases/movie/get_movie_detail.dart';
 import 'package:movie/domain/usecases/movie/get_movie_recommendations.dart';
@@ -151,6 +151,6 @@ void init() {
   // helper
   locator.registerLazySingleton<DatabaseHelper>(() => DatabaseHelper());
 
-  // external
-  locator.registerLazySingleton(() => http.Client());
+  //client
+  locator.registerLazySingleton(() => SSLpinning.client);
 }
