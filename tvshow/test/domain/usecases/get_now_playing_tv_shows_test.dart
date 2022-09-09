@@ -1,4 +1,4 @@
-import 'package:core/test/helpers/test_helper.mocks.dart';
+import 'package:core/helpers/test_helper.mocks.dart';
 import 'package:dartz/dartz.dart';
 import 'package:core/domain/entities/tv_show.dart';
 import 'package:tvshow/domain/usecases/tv_show/get_now_playing_tv_shows.dart';

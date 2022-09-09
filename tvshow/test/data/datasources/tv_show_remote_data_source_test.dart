@@ -6,7 +6,7 @@ import 'package:core/common/exception.dart';
 import 'package:core/data/datasources/tv_show_remote_data_source.dart';
 import 'package:core/data/models/tv_show_detail_model.dart';
 import 'package:core/data/models/tv_show_response.dart';
-import 'package:core/test/helpers/test_helper.mocks.dart';
+import 'package:core/helpers/test_helper.mocks.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:http/http.dart' as http;

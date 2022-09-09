@@ -1,7 +1,6 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:core/core.dart';
 import 'package:core/domain/entities/tv_show.dart';
-import 'package:core/test/presentation/bloc/tv_show_detail_notifier_test.mocks.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -13,6 +12,7 @@ import 'package:tvshow/domain/usecases/tv_show/save_watchlist.dart';
 import 'package:tvshow/presentation/bloc/tv_detail_bloc.dart';
 
 import '../../dummy_data/dummy_objects.dart';
+import '../../helper/tv_show_detail_bloc_test.mocks.dart';
 
 @GenerateMocks([
   GetTvDetail,

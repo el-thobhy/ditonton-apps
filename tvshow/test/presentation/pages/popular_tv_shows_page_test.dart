@@ -15,7 +15,7 @@ void main() {
     mockPopularTvBloc = MockPopularTvBloc();
   });
 
-  Widget _makeTestableWidget(Widget body) {
+  Widget makeTestableWidget(Widget body) {
     return BlocProvider<PopularTvBloc>(
       create: (context) => mockPopularTvBloc,
       child: MaterialApp(
@@ -34,7 +34,7 @@ void main() {
     final progressBarFinder = find.byType(CircularProgressIndicator);
     final centerFinder = find.byType(Center);
 
-    await tester.pumpWidget(_makeTestableWidget(const PopularTvsPage()));
+    await tester.pumpWidget(makeTestableWidget(const PopularTvsPage()));
 
     expect(centerFinder, findsOneWidget);
     expect(progressBarFinder, findsOneWidget);
@@ -51,7 +51,7 @@ void main() {
     final progressBarFinder = find.byType(CircularProgressIndicator);
     final centerFinder = find.byType(Center);
 
-    await tester.pumpWidget(_makeTestableWidget(const PopularTvsPage()));
+    await tester.pumpWidget(makeTestableWidget(const PopularTvsPage()));
 
     expect(centerFinder, findsOneWidget);
     expect(progressBarFinder, findsOneWidget);
@@ -67,7 +67,7 @@ void main() {
 
     final listViewFinder = find.byType(ListView);
 
-    await tester.pumpWidget(_makeTestableWidget(const PopularTvsPage()));
+    await tester.pumpWidget(makeTestableWidget(const PopularTvsPage()));
 
     expect(listViewFinder, findsOneWidget);
   });
@@ -81,7 +81,7 @@ void main() {
 
     final textFinder = find.byKey(const Key('error_message'));
 
-    await tester.pumpWidget(_makeTestableWidget(const PopularTvsPage()));
+    await tester.pumpWidget(makeTestableWidget(const PopularTvsPage()));
 
     expect(textFinder, findsOneWidget);
   });

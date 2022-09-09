@@ -1,4 +1,3 @@
-
 String getFormattedDurationFromList(List<int> runtimes) =>
     runtimes.map((runtime) => getFormattedDuration(runtime)).join(", ");
 

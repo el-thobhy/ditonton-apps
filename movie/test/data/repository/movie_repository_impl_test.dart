@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:core/test/helpers/test_helper.mocks.dart';
+import 'package:core/helpers/test_helper.mocks.dart';
 import 'package:dartz/dartz.dart';
 import 'package:core/data/models/genre_model.dart';
 import 'package:core/data/models/movie_detail_model.dart';

@@ -1,6 +1,6 @@
 import 'package:core/common/exception.dart';
 import 'package:core/data/datasources/movie_local_data_source.dart';
-import 'package:core/test/helpers/test_helper.mocks.dart';
+import 'package:core/helpers/test_helper.mocks.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
