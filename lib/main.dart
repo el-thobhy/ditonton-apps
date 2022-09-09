@@ -3,7 +3,6 @@ import 'package:core/core.dart';
 import 'package:core/common/drawer_item_enum.dart';
 import 'package:ditonton_apps/injection.dart' as di;
 import 'package:core/presentation/pages/home_drawer_page.dart';
-import 'package:core/presentation/pages/popular_tv_shows_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie/presentation/bloc/movie_detail_bloc.dart';
 import 'package:movie/presentation/bloc/now_playing_movie_bloc.dart';
@@ -15,20 +14,21 @@ import 'package:movie/presentation/pages/top_rated_movies_page.dart';
 import 'package:search/presentation/bloc/movie/search_movie_bloc.dart';
 import 'package:search/presentation/bloc/tvshow/search_tv_bloc.dart';
 import 'package:search/presentation/pages/search_movie_page.dart';
-import 'package:core/presentation/pages/top_rated_tv_shows_page.dart';
-import 'package:core/presentation/pages/tv_show_detail_page.dart';
 import 'package:core/presentation/pages/watchlist_page.dart';
 import 'package:core/presentation/provider/home_notifier.dart';
-import 'package:core/presentation/provider/popular_tv_shows_notifier.dart';
-import 'package:core/presentation/provider/top_rated_tv_shows_notifier.dart';
-import 'package:core/presentation/provider/tv_show_detail_notifier.dart';
-import 'package:core/presentation/provider/tv_show_list_notifier.dart';
 import 'package:core/presentation/provider/watchlist_movie_notifier.dart';
 import 'package:core/presentation/provider/watchlist_tv_show_notifier.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:search/presentation/pages/search_tv_page.dart';
+import 'package:tvshow/presentation/bloc/now_playing_tv_bloc.dart';
+import 'package:tvshow/presentation/bloc/popular_tv_bloc.dart';
+import 'package:tvshow/presentation/bloc/top_rated_tv_bloc.dart';
+import 'package:tvshow/presentation/bloc/tv_detail_bloc.dart';
+import 'package:tvshow/presentation/pages/popular_tv_page.dart';
+import 'package:tvshow/presentation/pages/top_rated_tv_page.dart';
+import 'package:tvshow/presentation/pages/tv_detail_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -46,14 +46,14 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (_) => di.locator<NowPlayingMovieBloc>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<TvListNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<NowPlayingTvBloc>(),
         ),
         BlocProvider(
           create: (_) => di.locator<MovieDetailBloc>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<TvDetailNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<TvDetailBloc>(),
         ),
         BlocProvider(
           create: (_) => di.locator<SearchMovieBloc>(),
@@ -64,14 +64,14 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (_) => di.locator<TopRatedMovieBloc>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<TopRatedTvNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<TopRatedTvBloc>(),
         ),
         BlocProvider(
           create: (_) => di.locator<PopularMovieBloc>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<PopularTvNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<PopularTvBloc>(),
         ),
         ChangeNotifierProvider(
           create: (_) => di.locator<WatchlistMovieNotifier>(),
@@ -99,15 +99,14 @@ class MyApp extends StatelessWidget {
             case PopularMoviesPage.routeName:
               return CupertinoPageRoute(
                   builder: (_) => const PopularMoviesPage());
-            case PopularTVShowsPage.routeName:
-              return CupertinoPageRoute(
-                  builder: (_) => const PopularTVShowsPage());
+            case PopularTvsPage.routeName:
+              return CupertinoPageRoute(builder: (_) => const PopularTvsPage());
             case TopRatedMoviesPage.routeName:
               return CupertinoPageRoute(
                   builder: (_) => const TopRatedMoviesPage());
-            case TopRatedTVShowsPage.routeName:
+            case TopRatedTvsPage.routeName:
               return CupertinoPageRoute(
-                  builder: (_) => const TopRatedTVShowsPage());
+                  builder: (_) => const TopRatedTvsPage());
             case MovieDetailPage.routeName:
               final id = settings.arguments as int;
               return MaterialPageRoute(

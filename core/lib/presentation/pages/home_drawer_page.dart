@@ -1,7 +1,6 @@
 import 'package:about/about.dart';
 import 'package:core/common/drawer_item_enum.dart';
 import 'package:core/core.dart';
-import 'package:core/presentation/pages/home_tv_show_page.dart';
 import 'package:movie/presentation/pages/home_movie_page.dart';
 import 'package:search/presentation/pages/search_movie_page.dart';
 import 'package:search/presentation/pages/search_tv_page.dart';
@@ -9,6 +8,7 @@ import 'package:core/presentation/pages/watchlist_page.dart';
 import 'package:core/presentation/provider/home_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tvshow/presentation/pages/home_tv_page.dart';
 
 class HomeDrawerPage extends StatelessWidget {
   static const routeName = '/home';

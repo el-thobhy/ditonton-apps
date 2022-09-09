@@ -3,6 +3,7 @@ import 'package:core/core.dart';
 import 'package:core/domain/entities/genre.dart';
 import 'package:core/domain/entities/movie.dart';
 import 'package:core/domain/entities/movie_detail.dart';
+import 'package:core/test/dummy_data/dummy_objects.dart';
 import 'package:core/test/presentation/provider/movie_detail_notifier_test.mocks.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -65,20 +66,6 @@ void main() {
   );
   const movies = <Movie>[tMovie];
 
-  const movieDetail = MovieDetail(
-    adult: false,
-    backdropPath: 'backdropPath',
-    genres: [Genre(id: 1, name: 'Action')],
-    id: 1,
-    originalTitle: 'originalTitle',
-    overview: 'overview',
-    posterPath: 'posterPath',
-    releaseDate: 'releaseDate',
-    runtime: 1,
-    title: 'title',
-    voteAverage: 1,
-    voteCount: 1,
-  );
 
   group(
     'Get Movie Detail',
@@ -87,7 +74,7 @@ void main() {
         'Should show movie detail when data is succesfully',
         build: () {
           when(mockGetMovieDetail.execute(id))
-              .thenAnswer((_) async => const Right(movieDetail));
+              .thenAnswer((_) async => const Right(testMovieDetail));
           when(mockGetMovieRecommendations.execute(id))
               .thenAnswer((_) async => const Right(movies));
           return bloc;
@@ -98,13 +85,13 @@ void main() {
           movieDetailStateInit.copyWith(detailState: RequestState.loading),
           movieDetailStateInit.copyWith(
             recommendationState: RequestState.loading,
-            detail: movieDetail,
+            detail: testMovieDetail,
             detailState: RequestState.loaded,
             message: '',
           ),
           movieDetailStateInit.copyWith(
             detailState: RequestState.loaded,
-            detail: movieDetail,
+            detail: testMovieDetail,
             recommendationState: RequestState.loaded,
             movieRecommendation: movies,
             message: '',

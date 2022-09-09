@@ -22,6 +22,7 @@ dependencies:
   provider: ^6.0.3
   cached_network_image: ^3.2.2
   flutter_rating_bar: ^4.0.1
+  flutter_bloc: ^8.1.1
 
   about:
     path: ../about
@@ -31,6 +32,9 @@ dependencies:
 
   movie:
     path: ../movie
+
+  tvshow:
+    path: ../tvshow
 
 dev_dependencies:
   flutter_lints: ^2.0.0

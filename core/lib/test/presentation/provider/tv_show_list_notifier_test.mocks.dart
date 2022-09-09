@@ -8,11 +8,11 @@ import 'package:dartz/dartz.dart' as i3;
 import 'package:core/common/failure.dart' as i6;
 import 'package:core/domain/entities/tv_show.dart' as i7;
 import 'package:core/domain/repositories/tv_show_repository.dart' as i2;
-import 'package:movie/domain/usecases/tv_show/get_now_playing_tv_shows.dart'
+import 'package:tvshow/domain/usecases/tv_show/get_now_playing_tv_shows.dart'
     as i4;
-import 'package:movie/domain/usecases/tv_show/get_popular_tv_shows.dart'
+import 'package:tvshow/domain/usecases/tv_show/get_popular_tv_shows.dart'
     as i8;
-import 'package:movie/domain/usecases/tv_show/get_top_rated_tv_shows.dart'
+import 'package:tvshow/domain/usecases/tv_show/get_top_rated_tv_shows.dart'
     as i9;
 import 'package:mockito/mockito.dart' as i1;
 
