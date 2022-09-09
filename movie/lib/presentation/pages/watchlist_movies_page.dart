@@ -36,11 +36,6 @@ class WatchlistMoviesPageState extends State<WatchlistMoviesPage>
               child: Text('No watchlist movie yet!', style: kBodyText),
             );
           } else if (state is WatchlistMovieLoaded) {
-            if (state.result.isEmpty) {
-              return Center(
-                child: Text('No watchlist movie yet!', style: kBodyText),
-              );
-            }
             return ListView.builder(
               itemBuilder: (context, index) {
                 final movie = state.result[index];

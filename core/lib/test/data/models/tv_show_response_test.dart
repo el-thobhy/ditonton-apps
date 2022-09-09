@@ -4,7 +4,6 @@ import 'package:core/data/models/tv_show_response.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../../dummy_data/dummy_objects.dart';
-import '../../json_reader.dart';
 
 void main() {
   group('fromJson', () {
