@@ -1,11 +1,9 @@
 import 'package:core/common/drawer_item_enum.dart';
-import 'package:core/presentation/provider/top_rated_movies_notifier.dart';
 import 'package:core/presentation/widgets/content_card_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie/presentation/bloc/top_rated_movie_bloc.dart';
 import 'package:movie/presentation/pages/movie_detail_page.dart';
-import 'package:provider/provider.dart';
 
 class TopRatedMoviesPage extends StatefulWidget {
   static const routeName = '/top-rated-movie';

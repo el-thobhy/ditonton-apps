@@ -5,6 +5,7 @@ import 'package:ditonton_apps/injection.dart' as di;
 import 'package:core/presentation/pages/home_drawer_page.dart';
 import 'package:core/presentation/pages/popular_tv_shows_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie/presentation/bloc/movie_detail_bloc.dart';
 import 'package:movie/presentation/bloc/now_playing_movie_bloc.dart';
 import 'package:movie/presentation/bloc/popular_movie_bloc.dart';
 import 'package:movie/presentation/bloc/top_rated_movie_bloc.dart';
@@ -18,11 +19,7 @@ import 'package:core/presentation/pages/top_rated_tv_shows_page.dart';
 import 'package:core/presentation/pages/tv_show_detail_page.dart';
 import 'package:core/presentation/pages/watchlist_page.dart';
 import 'package:core/presentation/provider/home_notifier.dart';
-import 'package:core/presentation/provider/movie_detail_notifier.dart';
-import 'package:core/presentation/provider/movie_list_notifier.dart';
-import 'package:core/presentation/provider/popular_movies_notifier.dart';
 import 'package:core/presentation/provider/popular_tv_shows_notifier.dart';
-import 'package:core/presentation/provider/top_rated_movies_notifier.dart';
 import 'package:core/presentation/provider/top_rated_tv_shows_notifier.dart';
 import 'package:core/presentation/provider/tv_show_detail_notifier.dart';
 import 'package:core/presentation/provider/tv_show_list_notifier.dart';
@@ -52,8 +49,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => di.locator<TvListNotifier>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<MovieDetailNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<MovieDetailBloc>(),
         ),
         ChangeNotifierProvider(
           create: (_) => di.locator<TvDetailNotifier>(),

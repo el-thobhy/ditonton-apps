@@ -8,11 +8,7 @@ import 'package:core/data/repositories/tv_show_repository_impl.dart';
 import 'package:core/domain/repositories/movie_repository.dart';
 import 'package:core/domain/repositories/tv_show_repository.dart';
 import 'package:core/presentation/provider/home_notifier.dart';
-import 'package:core/presentation/provider/movie_detail_notifier.dart';
-import 'package:core/presentation/provider/movie_list_notifier.dart';
-import 'package:core/presentation/provider/popular_movies_notifier.dart';
 import 'package:core/presentation/provider/popular_tv_shows_notifier.dart';
-import 'package:core/presentation/provider/top_rated_movies_notifier.dart';
 import 'package:core/presentation/provider/top_rated_tv_shows_notifier.dart';
 import 'package:core/presentation/provider/tv_show_detail_notifier.dart';
 import 'package:core/presentation/provider/tv_show_list_notifier.dart';
@@ -41,6 +37,7 @@ import 'package:movie/domain/usecases/tv_show/remove_watchlist.dart'
     as tv_show_rm;
 import 'package:movie/domain/usecases/tv_show/save_watchlist.dart'
     as tv_show_sv;
+import 'package:movie/presentation/bloc/movie_detail_bloc.dart';
 import 'package:movie/presentation/bloc/now_playing_movie_bloc.dart';
 import 'package:movie/presentation/bloc/popular_movie_bloc.dart';
 import 'package:movie/presentation/bloc/top_rated_movie_bloc.dart';
@@ -60,12 +57,12 @@ void init() {
     ),
   );
   locator.registerFactory(
-    () => MovieDetailNotifier(
-      getMovieDetail: locator(),
-      getMovieRecommendations: locator(),
-      getWatchListStatus: locator(),
-      saveWatchlist: locator(),
-      removeWatchlist: locator(),
+    () => MovieDetailBloc(
+      locator(),
+      locator(),
+      locator(),
+      locator(),
+      locator(),
     ),
   );
   locator.registerFactory(
