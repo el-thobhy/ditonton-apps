@@ -8,6 +8,7 @@ import 'package:movie/presentation/bloc/movie_detail_bloc.dart';
 import 'package:movie/presentation/bloc/now_playing_movie_bloc.dart';
 import 'package:movie/presentation/bloc/popular_movie_bloc.dart';
 import 'package:movie/presentation/bloc/top_rated_movie_bloc.dart';
+import 'package:movie/presentation/bloc/watchlist_movie_bloc.dart';
 import 'package:movie/presentation/pages/movie_detail_page.dart';
 import 'package:movie/presentation/pages/popular_movies_page.dart';
 import 'package:movie/presentation/pages/top_rated_movies_page.dart';
@@ -16,8 +17,6 @@ import 'package:search/presentation/bloc/tvshow/search_tv_bloc.dart';
 import 'package:search/presentation/pages/search_movie_page.dart';
 import 'package:core/presentation/pages/watchlist_page.dart';
 import 'package:core/presentation/provider/home_notifier.dart';
-import 'package:core/presentation/provider/watchlist_movie_notifier.dart';
-import 'package:core/presentation/provider/watchlist_tv_show_notifier.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -26,6 +25,7 @@ import 'package:tvshow/presentation/bloc/now_playing_tv_bloc.dart';
 import 'package:tvshow/presentation/bloc/popular_tv_bloc.dart';
 import 'package:tvshow/presentation/bloc/top_rated_tv_bloc.dart';
 import 'package:tvshow/presentation/bloc/tv_detail_bloc.dart';
+import 'package:tvshow/presentation/bloc/watchlist_tv_bloc.dart';
 import 'package:tvshow/presentation/pages/popular_tv_page.dart';
 import 'package:tvshow/presentation/pages/top_rated_tv_page.dart';
 import 'package:tvshow/presentation/pages/tv_detail_page.dart';
@@ -73,11 +73,11 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (_) => di.locator<PopularTvBloc>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<WatchlistMovieNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<WatchlistMovieBloc>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<WatchlistTvNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<WatchlistTvBloc>(),
         ),
         ChangeNotifierProvider(
           create: (_) => di.locator<HomeDrawerNotifier>(),

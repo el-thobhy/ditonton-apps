@@ -1,10 +1,10 @@
 import 'package:core/core.dart';
 import 'package:core/common/drawer_item_enum.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tvshow/presentation/bloc/watchlist_tv_bloc.dart';
 import 'package:tvshow/presentation/pages/tv_detail_page.dart';
-import 'package:core/presentation/provider/watchlist_tv_show_notifier.dart';
 import 'package:core/presentation/widgets/content_card_list.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class WatchlistTvPage extends StatefulWidget {
   const WatchlistTvPage({Key? key}) : super(key: key);
@@ -17,23 +17,21 @@ class WatchlistTvPageState extends State<WatchlistTvPage> {
   @override
   void initState() {
     super.initState();
-    Future.microtask(() =>
-        Provider.of<WatchlistTvNotifier>(context, listen: false)
-            .fetchWatchlistTv());
+    context.read<WatchlistTvBloc>().add(OnFetchWatchlistTv());
   }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 12.0),
-      child: Consumer<WatchlistTvNotifier>(
-        builder: (context, data, child) {
-          if (data.watchlistState == RequestState.loading) {
+      child: BlocBuilder<WatchlistTvBloc, WatchlistTvState>(
+        builder: (context, state) {
+          if (state is WatchlistTvLoading) {
             return const Center(
               child: CircularProgressIndicator(),
             );
-          } else if (data.watchlistState == RequestState.loaded) {
-            if (data.watchlistTv.isEmpty) {
+          } else if (state is WatchlistTvLoaded) {
+            if (state.result.isEmpty) {
               return Center(
                 child: Text('No watchlist tv show yet!', style: kBodyText),
               );
@@ -41,7 +39,7 @@ class WatchlistTvPageState extends State<WatchlistTvPage> {
 
             return ListView.builder(
               itemBuilder: (context, index) {
-                final tvShow = data.watchlistTv[index];
+                final tvShow = state.result[index];
 
                 return ContentCardList(
                   activeDrawerItem: DrawerItem.tvShow,
@@ -49,14 +47,17 @@ class WatchlistTvPageState extends State<WatchlistTvPage> {
                   tvShow: tvShow,
                 );
               },
-              itemCount: data.watchlistTv.length,
+              itemCount: state.result.length,
             );
-          } else {
+          } else if (state is WatchlistTvError) {
             return Center(
               key: const Key('error_message'),
-              child: Text(data.message),
+              child: Text(state.message),
             );
           }
+          return Center(
+            child: Text('No watchlist tv show yet!', style: kBodyText),
+          );
         },
       ),
     );

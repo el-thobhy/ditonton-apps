@@ -1,8 +1,6 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:core/core.dart';
-import 'package:core/domain/entities/genre.dart';
 import 'package:core/domain/entities/movie.dart';
-import 'package:core/domain/entities/movie_detail.dart';
 import 'package:core/test/dummy_data/dummy_objects.dart';
 import 'package:core/test/presentation/provider/movie_detail_notifier_test.mocks.dart';
 import 'package:dartz/dartz.dart';
