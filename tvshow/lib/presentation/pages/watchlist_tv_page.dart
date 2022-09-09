@@ -31,12 +31,6 @@ class WatchlistTvPageState extends State<WatchlistTvPage> {
               child: CircularProgressIndicator(),
             );
           } else if (state is WatchlistTvLoaded) {
-            if (state.result.isEmpty) {
-              return Center(
-                child: Text('No watchlist tv show yet!', style: kBodyText),
-              );
-            }
-
             return ListView.builder(
               itemBuilder: (context, index) {
                 final tvShow = state.result[index];

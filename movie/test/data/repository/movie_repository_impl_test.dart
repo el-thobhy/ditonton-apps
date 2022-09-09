@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:core/test/dummy_data/dummy_objects.dart';
 import 'package:core/test/helpers/test_helper.mocks.dart';
 import 'package:dartz/dartz.dart';
 import 'package:core/data/models/genre_model.dart';
@@ -12,6 +11,8 @@ import 'package:core/common/failure.dart';
 import 'package:core/domain/entities/movie.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
+
+import '../../dummy_data/dummy_objects.dart';
 
 
 void main() {

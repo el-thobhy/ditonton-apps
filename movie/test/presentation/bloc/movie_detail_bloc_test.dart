@@ -1,8 +1,7 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:core/core.dart';
 import 'package:core/domain/entities/movie.dart';
-import 'package:core/test/dummy_data/dummy_objects.dart';
-import 'package:core/test/presentation/provider/movie_detail_notifier_test.mocks.dart';
+import 'package:core/test/presentation/bloc/movie_detail_notifier_test.mocks.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -13,6 +12,8 @@ import 'package:movie/domain/usecases/movie/get_watchlist_status_movie.dart';
 import 'package:movie/domain/usecases/movie/remove_watchlist.dart';
 import 'package:movie/domain/usecases/movie/save_watchlist.dart';
 import 'package:movie/presentation/bloc/movie_detail_bloc.dart';
+
+import '../../dummy_data/dummy_objects.dart';
 
 @GenerateMocks([
   GetMovieDetail,

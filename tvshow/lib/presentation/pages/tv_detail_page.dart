@@ -71,7 +71,7 @@ class DetailContent extends StatelessWidget {
           style: kHeading5,
         ),
         ElevatedButton(
-          onPressed: ([bool mounted = true]) async {
+          onPressed: () async {
             if (!state.isAddedToWatchlist) {
               context.read<TvDetailBloc>().add(OnAddWatchlist(tvShow));
             } else {
@@ -82,7 +82,6 @@ class DetailContent extends StatelessWidget {
 
             if (message == 'Added to Watchlist' ||
                 message == 'Removed from Watchlist') {
-              if (!mounted) return;
               ScaffoldMessenger.of(context)
                   .showSnackBar(SnackBar(content: Text(message)));
             }
