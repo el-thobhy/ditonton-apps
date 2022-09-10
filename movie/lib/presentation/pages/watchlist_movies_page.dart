@@ -33,6 +33,7 @@ class WatchlistMoviesPageState extends State<WatchlistMoviesPage>
             );
           } else if (state is WatchlistMovieEmpty) {
             return Center(
+              key: const Key('empty'),
               child: Text('No watchlist movie yet!', style: kBodyText),
             );
           } else if (state is WatchlistMovieLoaded) {

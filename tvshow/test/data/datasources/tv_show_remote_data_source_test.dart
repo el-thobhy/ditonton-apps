@@ -23,9 +23,9 @@ void main() {
   });
 
   group('get Now Playing TVShows', () {
-    final testTVShowList = TvResponse.fromJson(
-            json.decode(readJson('dummy_data/on_the_air.json')))
-        .tvList;
+    final testTVShowList =
+        TvResponse.fromJson(json.decode(readJson('dummy_data/on_the_air.json')))
+            .tvList;
 
     test('should return list of TVShow Model when the response code is 200',
         () async {

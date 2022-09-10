@@ -1,61 +1,42 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:core/core.dart';
-import 'package:core/data/models/tv_show_model.dart';
-import 'package:core/domain/entities/tv_show.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:tvshow/domain/usecases/tv_show/get_top_rated_tv_shows.dart';
 import 'package:tvshow/presentation/bloc/top_rated_tv_bloc.dart';
 
-import '../../helper/top_rated_tv_shows_bloc_test.mocks.dart';
+import '../../dummy_data/dummy_objects.dart';
+import 'top_rated_tv_bloc_test.mocks.dart';
 
-@GenerateMocks([TvModel])
+@GenerateMocks([GetTopRatedTv])
 void main() {
   late TopRatedTvBloc topRatedBloc;
-  late MockGetTopRatedTVShows mockTopRatedTvs;
+  late MockGetTopRatedTv mockTopRatedTvs;
 
   setUp(() {
-    mockTopRatedTvs = MockGetTopRatedTVShows();
+    mockTopRatedTvs = MockGetTopRatedTv();
     topRatedBloc = TopRatedTvBloc(mockTopRatedTvs);
   });
 
-  test('initial state should be empty', () {
+  test('Initial state should be empty', () {
     expect(topRatedBloc.state, TopRatedTvEmpty());
   });
 
-  const tvModel = TvShow(
-    backdropPath: '/muth4OYamXf41G2evdrLEg8d3om.jpg',
-    genreIds: [14, 28],
-    id: 557,
-    originalName: 'Spider-Man',
-    overview:
-        'After being bitten by a genetically altered spider, nerdy high school student Peter Parker is endowed with amazing powers to become the Amazing superhero known as Spider-Man.',
-    popularity: 60.441,
-    posterPath: '/rweIrveL43TaxUN0akQEaAXL6x0.jpg',
-    firstAirDate: '2002-05-01',
-    name: 'Spider-Man',
-    originCountry: ['us'],
-    originalLanguage: 'en',
-    voteAverage: 7.2,
-    voteCount: 13507,
-  );
-
-  const tvList = [tvModel];
-
   group('TopRated Tv', () {
     blocTest<TopRatedTvBloc, TopRatedTvState>(
-      'Should emit Loading and Loaded when TopRated is successfully',
+      'Should return Loading and Loaded state when fetch data success',
       build: () {
         when(mockTopRatedTvs.execute())
-            .thenAnswer((_) async => const Right(tvList));
+            .thenAnswer((_) async => Right(testTVShowList));
         return topRatedBloc;
       },
       act: (bloc) => bloc.add(const OnFetchTopRated()),
       wait: const Duration(milliseconds: 500),
       expect: () => [
         TopRatedTvLoading(),
-        const TopRatedTvLoaded(tvList),
+        TopRatedTvLoaded(testTVShowList),
       ],
       verify: (bloc) {
         verify(mockTopRatedTvs.execute());
@@ -64,7 +45,7 @@ void main() {
     );
 
     blocTest<TopRatedTvBloc, TopRatedTvState>(
-      'Should Emit Loading and error state when fail TopRated',
+      'Should return Loading and error state when fetch data fail',
       build: () {
         when(mockTopRatedTvs.execute()).thenAnswer(
             (_) async => const Left(ServerFailure('Server Failure')));
@@ -82,7 +63,7 @@ void main() {
     );
 
     blocTest<TopRatedTvBloc, TopRatedTvState>(
-      'Should Emit loading and Empty state when data TopRated is empty',
+      'Should return loading and Empty state when data is empty',
       build: () {
         when(mockTopRatedTvs.execute())
             .thenAnswer((_) async => const Right([]));

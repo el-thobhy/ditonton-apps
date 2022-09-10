@@ -2,110 +2,94 @@ import 'package:core/common/drawer_item_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mocktail/mocktail.dart';
+import 'package:mockito/annotations.dart';
+import 'package:mockito/mockito.dart';
 import 'package:search/search.dart';
 
 import '../../dummy_data/dummy_objects.dart';
-import '../../helper/search_page_test_mock.dart';
+import 'search_tv_page_test.mocks.dart';
 
+@GenerateMocks([SearchTvBloc])
 void main() {
-  late FakeSearchTVShowsBloc fakeSearchTVShowsBloc;
+  late MockSearchTvBloc mockBloc;
 
-  setUpAll(() {
-    registerFallbackValue(FakeSearchMoviesEvent());
-    registerFallbackValue(FakeSearchMoviesState());
-    registerFallbackValue(FakeSearchTVShowsEvent());
-    registerFallbackValue(FakeSearchTVShowsState());
-    fakeSearchTVShowsBloc = FakeSearchTVShowsBloc();
+  setUp(() {
+    mockBloc = MockSearchTvBloc();
   });
 
-  tearDown(() {
-    fakeSearchTVShowsBloc.close();
-  });
-
-  Widget createTestableWidget(Widget body) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider<SearchTvBloc>(
-          create: (context) => fakeSearchTVShowsBloc,
-        ),
-      ],
+  Widget makeTestableWidget(Widget body) {
+    return BlocProvider<SearchTvBloc>.value(
+      value: mockBloc,
       child: MaterialApp(
         home: body,
       ),
     );
   }
 
-  group('search tv shows test cases', () {
-    testWidgets(
-      "Page should display Loading indicator when data is loading",
+  testWidgets(
+      'Page should display circular progress indicator bar when loading',
       (WidgetTester tester) async {
-        when(() => fakeSearchTVShowsBloc.state).thenReturn(SearchTvLoading());
+    when(mockBloc.stream).thenAnswer((_) => Stream.value(SearchTvLoading()));
+    when(mockBloc.state).thenReturn(SearchTvLoading());
 
-        final progressbarFinder = find.byType(CircularProgressIndicator);
+    final progressBarFinder = find.byType(CircularProgressIndicator);
 
-        await tester.pumpWidget(createTestableWidget(
-          const SearchTvPage(
-            activeDrawerItem: DrawerItem.tvShow,
-          ),
-        ));
+    await tester.pumpWidget(makeTestableWidget(
+      const SearchTvPage(
+        activeDrawerItem: DrawerItem.tvShow,
+      ),
+    ));
 
-        expect(progressbarFinder, findsOneWidget);
-      },
-    );
+    expect(progressBarFinder, findsOneWidget);
+  });
 
-    testWidgets(
-      "Page should display ListView when data is gotten successful",
+  testWidgets('Page should display ListView when loaded state',
       (WidgetTester tester) async {
-        when(() => fakeSearchTVShowsBloc.state)
-            .thenReturn(SearchTvLoaded(testTVShowList));
+    when(mockBloc.stream)
+        .thenAnswer((_) => Stream.value(SearchTvLoaded(testTVShowList)));
+    when(mockBloc.state).thenReturn(SearchTvLoaded(testTVShowList));
 
-        final listViewFinder = find.byType(Expanded);
+    final listViewFinder = find.byType(ListView);
 
-        await tester.pumpWidget(createTestableWidget(
-          const SearchTvPage(
-            activeDrawerItem: DrawerItem.tvShow,
-          ),
-        ));
+    await tester.pumpWidget(makeTestableWidget(
+      const SearchTvPage(
+        activeDrawerItem: DrawerItem.tvShow,
+      ),
+    ));
 
-        expect(listViewFinder, findsOneWidget);
-      },
-    );
+    expect(listViewFinder, findsOneWidget);
+  });
 
-    testWidgets(
-      "Page should display error message when data failed to fetch",
+  testWidgets('Page should display notification message when data Error',
       (WidgetTester tester) async {
-        when(() => fakeSearchTVShowsBloc.state)
-            .thenReturn(const SearchTvError('error'));
+    when(mockBloc.stream)
+        .thenAnswer((_) => Stream.value(const SearchTvError('Error message')));
+    when(mockBloc.state).thenReturn(const SearchTvError('Error message'));
 
-        final errorTypeFinder = find.byType(Container);
+    final textFinder = find.byKey(const Key('error_message'));
 
-        await tester.pumpWidget(createTestableWidget(
-          const SearchTvPage(
-            activeDrawerItem: DrawerItem.tvShow,
-          ),
-        ));
-        await tester.pump(const Duration(seconds: 1));
+    await tester.pumpWidget(makeTestableWidget(
+      const SearchTvPage(
+        activeDrawerItem: DrawerItem.tvShow,
+      ),
+    ));
 
-        expect(errorTypeFinder, findsOneWidget);
-      },
-    );
+    expect(textFinder, findsOneWidget);
+  });
 
-    testWidgets(
-      "Page should display empty message when the searched data is empty",
+  testWidgets('Page should display empty Continer when data Empty',
       (WidgetTester tester) async {
-        when(() => fakeSearchTVShowsBloc.state).thenReturn(SearchTvEmpty());
+    when(mockBloc.stream).thenAnswer((_) => Stream.value(SearchTvEmpty()));
+    when(mockBloc.state).thenReturn(SearchTvEmpty());
 
-        final emptyTypeFinder = find.byType(Container);
+    final finder = find.byType(Container);
 
-        await tester.pumpWidget(createTestableWidget(
-          const SearchTvPage(
-            activeDrawerItem: DrawerItem.tvShow,
-          ),
-        ));
-        await tester.pump(const Duration(seconds: 1));
-        expect(emptyTypeFinder, findsOneWidget);
-      },
-    );
+    await tester.pumpWidget(makeTestableWidget(
+      const SearchTvPage(
+        activeDrawerItem: DrawerItem.tvShow,
+      ),
+    ));
+
+    expect(finder, findsOneWidget);
   });
 }

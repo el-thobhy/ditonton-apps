@@ -38,8 +38,7 @@ void main() {
     );
   }
 
-  testWidgets(
-      'TV detail should be display circular progress when application is loading',
+  testWidgets('Should be display circular progress when loading state',
       (WidgetTester tester) async {
     when(() => mockMovieDetailBloc.state).thenReturn(
         MovieDetailState.initial().copyWith(detailState: RequestState.loading));
@@ -51,7 +50,7 @@ void main() {
     expect(progressBarFinder, findsOneWidget);
   });
 
-  testWidgets('Recommendation should display loading',
+  testWidgets('should display loading in recomendation',
       (WidgetTester tester) async {
     when(() => mockMovieDetailBloc.state)
         .thenReturn(MovieDetailState.initial().copyWith(
@@ -70,7 +69,7 @@ void main() {
   });
 
   testWidgets(
-      'Button on the watchlist should add icon when the data not added to watchlist page',
+      'Watchlist button should be add icon when the data not added to watchlist page yet',
       (WidgetTester tester) async {
     when(() => mockMovieDetailBloc.state)
         .thenReturn(MovieDetailState.initial().copyWith(
@@ -89,7 +88,7 @@ void main() {
   });
 
   testWidgets(
-      'Button on the watchlist should add icon when the data added to watchlist page',
+      'Watchlist button should be add icon when the data added to watchlist page',
       (WidgetTester tester) async {
     when(() => mockMovieDetailBloc.state)
         .thenReturn(MovieDetailState.initial().copyWith(
@@ -108,7 +107,7 @@ void main() {
   });
 
   testWidgets(
-      'Button on the watchlist shoild add message when the data add to watchlist',
+      'Watchlist button should be display message when the data add to watchlist',
       (WidgetTester tester) async {
     whenListen(
         mockMovieDetailBloc,
@@ -146,7 +145,7 @@ void main() {
   });
 
   testWidgets(
-      'Button on the watchlist shoild add message when the data remove from watchlist',
+      'Watchlist button should display message when the data remove from watchlist',
       (WidgetTester tester) async {
     whenListen(
         mockMovieDetailBloc,
@@ -183,7 +182,7 @@ void main() {
     expect(find.text('Removed from Watchlist'), findsOneWidget);
   });
 
-  testWidgets('Button on the watchlist should add notification when error',
+  testWidgets('Watchlist button should display dialog when error',
       (WidgetTester tester) async {
     whenListen(
         mockMovieDetailBloc,
@@ -228,14 +227,12 @@ void main() {
     expect(find.text('Failed'), findsOneWidget);
   });
 
-  testWidgets('Tv Detail should add message error when data error',
+  testWidgets('Tv Detail should show message error when data error',
       (WidgetTester tester) async {
     when(() => mockMovieDetailBloc.state).thenReturn(MovieDetailState.initial()
-        .copyWith(
-            detailState: RequestState.error,
-            message: 'Failed to connect '));
+        .copyWith(detailState: RequestState.error, message: 'Failed '));
 
-    final textErrorBarFinder = find.text('Failed to connect ');
+    final textErrorBarFinder = find.text('Failed ');
 
     await tester.pumpWidget(makeTestableWidget(const MovieDetailPage(id: 1)));
     await tester.pump();

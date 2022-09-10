@@ -12,12 +12,12 @@ import '../../dummy_data/dummy_objects.dart';
 
 void main() {
   late TVShowRepositoryImpl repository;
-  late MockTVShowRemoteDataSource mockRemoteDataSource;
-  late MockTVShowLocalDataSource mockLocalDataSource;
+  late MockTvRemoteDataSource mockRemoteDataSource;
+  late MockTvLocalDataSource mockLocalDataSource;
 
   setUp(() {
-    mockRemoteDataSource = MockTVShowRemoteDataSource();
-    mockLocalDataSource = MockTVShowLocalDataSource();
+    mockRemoteDataSource = MockTvRemoteDataSource();
+    mockLocalDataSource = MockTvLocalDataSource();
     repository = TVShowRepositoryImpl(
       remoteDataSource: mockRemoteDataSource,
       localDataSource: mockLocalDataSource,
@@ -43,8 +43,7 @@ void main() {
         'should return server failure when the call to remote data source is unsuccessful',
         () async {
       // arrange
-      when(mockRemoteDataSource.getNowPlayingTv())
-          .thenThrow(ServerException());
+      when(mockRemoteDataSource.getNowPlayingTv()).thenThrow(ServerException());
       // act
       final result = await repository.getNowPlayingTv();
       // assert
@@ -62,8 +61,10 @@ void main() {
       final result = await repository.getNowPlayingTv();
       // assert
       verify(mockRemoteDataSource.getNowPlayingTv());
-      expect(result,
-          equals(const Left(ConnectionFailure('Failed to connect to the network'))));
+      expect(
+          result,
+          equals(const Left(
+              ConnectionFailure('Failed to connect to the network'))));
     });
   });
 
@@ -84,8 +85,7 @@ void main() {
         'should return server failure when call to data source is unsuccessful',
         () async {
       // arrange
-      when(mockRemoteDataSource.getPopularTv())
-          .thenThrow(ServerException());
+      when(mockRemoteDataSource.getPopularTv()).thenThrow(ServerException());
       // act
       final result = await repository.getPopularTv();
       // assert
@@ -101,8 +101,8 @@ void main() {
       // act
       final result = await repository.getPopularTv();
       // assert
-      expect(
-          result, const Left(ConnectionFailure('Failed to connect to the network')));
+      expect(result,
+          const Left(ConnectionFailure('Failed to connect to the network')));
     });
   });
 
@@ -123,8 +123,7 @@ void main() {
     test('should return ServerFailure when call to data source is unsuccessful',
         () async {
       // arrange
-      when(mockRemoteDataSource.getTopRatedTv())
-          .thenThrow(ServerException());
+      when(mockRemoteDataSource.getTopRatedTv()).thenThrow(ServerException());
       // act
       final result = await repository.getTopRatedTv();
       // assert
@@ -140,8 +139,8 @@ void main() {
       // act
       final result = await repository.getTopRatedTv();
       // assert
-      expect(
-          result, const Left(ConnectionFailure('Failed to connect to the network')));
+      expect(result,
+          const Left(ConnectionFailure('Failed to connect to the network')));
     });
   });
 
@@ -165,8 +164,7 @@ void main() {
         'should return Server Failure when the call to remote data source is unsuccessful',
         () async {
       // arrange
-      when(mockRemoteDataSource.getTvDetail(tId))
-          .thenThrow(ServerException());
+      when(mockRemoteDataSource.getTvDetail(tId)).thenThrow(ServerException());
       // act
       final result = await repository.getTvDetail(tId);
       // assert
@@ -184,8 +182,10 @@ void main() {
       final result = await repository.getTvDetail(tId);
       // assert
       verify(mockRemoteDataSource.getTvDetail(tId));
-      expect(result,
-          equals(const Left(ConnectionFailure('Failed to connect to the network'))));
+      expect(
+          result,
+          equals(const Left(
+              ConnectionFailure('Failed to connect to the network'))));
     });
   });
 
@@ -229,8 +229,10 @@ void main() {
       final result = await repository.getTvRecommendations(tId);
       // assert
       verify(mockRemoteDataSource.getTvRecommendations(tId));
-      expect(result,
-          equals(const Left(ConnectionFailure('Failed to connect to the network'))));
+      expect(
+          result,
+          equals(const Left(
+              ConnectionFailure('Failed to connect to the network'))));
     });
   });
 
@@ -253,8 +255,7 @@ void main() {
     test('should return ServerFailure when call to data source is unsuccessful',
         () async {
       // arrange
-      when(mockRemoteDataSource.searchTv(tQuery))
-          .thenThrow(ServerException());
+      when(mockRemoteDataSource.searchTv(tQuery)).thenThrow(ServerException());
       // act
       final result = await repository.searchTv(tQuery);
       // assert
@@ -270,8 +271,8 @@ void main() {
       // act
       final result = await repository.searchTv(tQuery);
       // assert
-      expect(
-          result, const Left(ConnectionFailure('Failed to connect to the network')));
+      expect(result,
+          const Left(ConnectionFailure('Failed to connect to the network')));
     });
   });
 

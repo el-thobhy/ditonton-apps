@@ -5,13 +5,12 @@ import 'package:tvshow/domain/usecases/tv_show/get_top_rated_tv_shows.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-
 void main() {
   late GetTopRatedTv usecase;
-  late MockTVShowRepository mockTVShowRepository;
+  late MockTvRepository mockTVShowRepository;
 
   setUp(() {
-    mockTVShowRepository = MockTVShowRepository();
+    mockTVShowRepository = MockTvRepository();
     usecase = GetTopRatedTv(mockTVShowRepository);
   });
 

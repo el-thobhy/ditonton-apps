@@ -1,16 +1,16 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:core/core.dart';
-import 'package:core/data/models/movie_model.dart';
 import 'package:core/domain/entities/movie.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:movie/domain/usecases/movie/get_now_playing_movies.dart';
 import 'package:movie/presentation/bloc/now_playing_movie_bloc.dart';
 
-import '../../helper/movie_list_bloc_test.mocks.dart';
+import 'now_palying_movie_bloc_test.mocks.dart';
 
-@GenerateMocks([MovieModel])
+@GenerateMocks([GetNowPlayingMovies])
 void main() {
   late NowPlayingMovieBloc nowPlayingBloc;
   late MockGetNowPlayingMovies mockNowPlayingMovies;
@@ -45,7 +45,7 @@ void main() {
 
   group('NowPlaying movie', () {
     blocTest<NowPlayingMovieBloc, NowPlayingMovieState>(
-      'Should emit Loading and Loaded when NowPlaying is successfully',
+      'Should return Loading and Loaded state when NowPlaying is successfully',
       build: () {
         when(mockNowPlayingMovies.execute())
             .thenAnswer((_) async => const Right(movieList));
@@ -64,7 +64,7 @@ void main() {
     );
 
     blocTest<NowPlayingMovieBloc, NowPlayingMovieState>(
-      'Should Emit Loading and error state when fail NowPlaying',
+      'Should return Loading and error state when fail NowPlaying',
       build: () {
         when(mockNowPlayingMovies.execute()).thenAnswer(
             (_) async => const Left(ServerFailure('Server Failure')));
@@ -82,10 +82,10 @@ void main() {
     );
 
     blocTest<NowPlayingMovieBloc, NowPlayingMovieState>(
-      'Should Emit loading and Empty state when data NowPlaying is empty',
+      'Should return loading and Empty state when data NowPlaying is empty',
       build: () {
-        when(mockNowPlayingMovies.execute()).thenAnswer(
-            (_) async => const Right([]));
+        when(mockNowPlayingMovies.execute())
+            .thenAnswer((_) async => const Right([]));
         return nowPlayingBloc;
       },
       act: (bloc) => bloc.add(const OnFetchNowPlaying()),

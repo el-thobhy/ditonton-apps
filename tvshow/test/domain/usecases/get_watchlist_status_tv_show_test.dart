@@ -3,13 +3,12 @@ import 'package:tvshow/domain/usecases/tv_show/get_watchlist_status_tv_show.dart
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-
 void main() {
   late GetWatchListStatusTv usecase;
-  late MockTVShowRepository mockTVShowRepository;
+  late MockTvRepository mockTVShowRepository;
 
   setUp(() {
-    mockTVShowRepository = MockTVShowRepository();
+    mockTVShowRepository = MockTvRepository();
     usecase = GetWatchListStatusTv(mockTVShowRepository);
   });
 

@@ -5,7 +5,6 @@ import 'package:movie/domain/usecases/movie/get_top_rated_movies.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-
 void main() {
   late GetTopRatedMovies usecase;
   late MockMovieRepository mockMovieRepository;

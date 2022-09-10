@@ -100,6 +100,7 @@ class _SearchTvPageState extends State<SearchTvPage> {
   Widget _buildErrorMessage() => Container(
         margin: const EdgeInsets.only(top: 32.0),
         child: Center(
+          key: const Key('error_message'),
           child: Text(
             '$_title not found!',
             style: kBodyText,

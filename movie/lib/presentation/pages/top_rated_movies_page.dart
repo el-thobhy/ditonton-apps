@@ -55,9 +55,10 @@ class TopRatedMoviesPageState extends State<TopRatedMoviesPage> {
                 key: const Key('error_message'),
                 child: Text(state.message),
               );
-            } else {
+            } else if (state is TopRatedMovieEmpty) {
               return Container();
             }
+            return Container();
           },
         ),
       ),

@@ -91,11 +91,11 @@ class MyApp extends StatelessWidget {
           textTheme: kTextTheme,
           colorScheme: kColorScheme.copyWith(secondary: kMikadoYellow),
         ),
-        home: HomeDrawerPage(),
+        home: const HomeDrawerPage(),
         onGenerateRoute: (RouteSettings settings) {
           switch (settings.name) {
             case HomeDrawerPage.routeName:
-              return MaterialPageRoute(builder: (_) => HomeDrawerPage());
+              return MaterialPageRoute(builder: (_) => const HomeDrawerPage());
             case PopularMoviesPage.routeName:
               return CupertinoPageRoute(
                   builder: (_) => const PopularMoviesPage());

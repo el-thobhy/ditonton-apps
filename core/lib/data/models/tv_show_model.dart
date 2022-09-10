@@ -2,20 +2,21 @@ import 'package:core/domain/entities/tv_show.dart';
 import 'package:equatable/equatable.dart';
 
 class TvModel extends Equatable {
-  const TvModel(
-      {required this.backdropPath,
-      required this.firstAirDate,
-      required this.genreIds,
-      required this.id,
-      required this.name,
-      required this.originCountry,
-      required this.originalLanguage,
-      required this.originalName,
-      required this.overview,
-      required this.popularity,
-      required this.posterPath,
-      required this.voteAverage,
-      required this.voteCount});
+  const TvModel({
+    required this.backdropPath,
+    required this.firstAirDate,
+    required this.genreIds,
+    required this.id,
+    required this.name,
+    required this.originCountry,
+    required this.originalLanguage,
+    required this.originalName,
+    required this.overview,
+    required this.popularity,
+    required this.posterPath,
+    required this.voteAverage,
+    required this.voteCount,
+  });
 
   final String? backdropPath;
   final String? firstAirDate;

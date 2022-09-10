@@ -13,7 +13,7 @@ import 'package:movie/domain/usecases/movie/save_watchlist.dart';
 import 'package:movie/presentation/bloc/movie_detail_bloc.dart';
 
 import '../../dummy_data/dummy_objects.dart';
-import '../../helper/movie_detail_bloc_test.mocks.dart';
+import 'movie_detail_bloc_test.mocks.dart';
 
 @GenerateMocks([
   GetMovieDetail,
@@ -65,12 +65,11 @@ void main() {
   );
   const movies = <Movie>[tMovie];
 
-
   group(
     'Get Movie Detail',
     () {
       blocTest<MovieDetailBloc, MovieDetailState>(
-        'Should show movie detail when data is succesfully',
+        'Should show movie detail when data is success',
         build: () {
           when(mockGetMovieDetail.execute(id))
               .thenAnswer((_) async => const Right(testMovieDetail));
@@ -102,7 +101,7 @@ void main() {
         },
       );
       blocTest<MovieDetailBloc, MovieDetailState>(
-        'Should return Error when fetch data is failed',
+        'Should return Error state when fetch data is failed',
         build: () {
           when(mockGetMovieDetail.execute(id)).thenAnswer(
               (_) async => const Left(ServerFailure('Server Failure')));

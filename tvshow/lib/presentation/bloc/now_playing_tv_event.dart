@@ -8,7 +8,6 @@ abstract class NowPlayingTvEvent extends Equatable {
 }
 
 class OnFetchNowPlaying extends NowPlayingTvEvent {
-
   const OnFetchNowPlaying();
 
   @override

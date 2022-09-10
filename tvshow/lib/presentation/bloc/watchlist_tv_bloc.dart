@@ -7,8 +7,7 @@ import 'package:tvshow/domain/usecases/tv_show/get_watchlist_tv_shows.dart';
 part 'watchlist_tv_event.dart';
 part 'watchlist_tv_state.dart';
 
-class WatchlistTvBloc
-    extends Bloc<WatchlistTvEvent, WatchlistTvState> {
+class WatchlistTvBloc extends Bloc<WatchlistTvEvent, WatchlistTvState> {
   final GetWatchlistTv _getWatchlistTvs;
 
   EventTransformer<T> debounce<T>(Duration duration) {

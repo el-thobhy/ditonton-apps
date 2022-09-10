@@ -7,8 +7,7 @@ import 'package:tvshow/domain/usecases/tv_show/get_now_playing_tv_shows.dart';
 part 'now_playing_tv_event.dart';
 part 'now_playing_tv_state.dart';
 
-class NowPlayingTvBloc
-    extends Bloc<NowPlayingTvEvent, NowPlayingTvState> {
+class NowPlayingTvBloc extends Bloc<NowPlayingTvEvent, NowPlayingTvState> {
   final GetNowPlayingTv _nowPlayingTvs;
 
   EventTransformer<T> debounce<T>(Duration duration) {

@@ -1,13 +1,15 @@
 import 'package:core/domain/entities/tv_show.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mockito/annotations.dart';
 import 'package:tvshow/presentation/bloc/top_rated_tv_bloc.dart';
 import 'package:tvshow/presentation/pages/top_rated_tv_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-import '../mocks/bloc_helper_mocks.dart';
+import 'top_rated_tv_shows_page_test.mocks.dart';
 
+@GenerateMocks([TopRatedTvBloc])
 void main() {
   late MockTopRatedTvBloc mockTopRatedTvBloc;
 
@@ -24,7 +26,7 @@ void main() {
     );
   }
 
-  testWidgets('Home Page should display circular progress bar when loading',
+  testWidgets('Page should display circular progress bar when loading',
       (WidgetTester tester) async {
     when(mockTopRatedTvBloc.stream)
         .thenAnswer((_) => Stream.value(TopRatedTvLoading()));
@@ -39,7 +41,7 @@ void main() {
     expect(progressBarFinder, findsOneWidget);
   });
 
-  testWidgets('Home Page should display data when data is loaded',
+  testWidgets('Page should display data when data is loaded',
       (WidgetTester tester) async {
     final tvList = <TvShow>[];
     when(mockTopRatedTvBloc.stream)

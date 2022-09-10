@@ -6,13 +6,12 @@ import 'package:mockito/mockito.dart';
 
 import '../../dummy_data/dummy_objects.dart';
 
-
 void main() {
   late RemoveWatchlist usecase;
-  late MockTVShowRepository mockTVShowRepository;
+  late MockTvRepository mockTVShowRepository;
 
   setUp(() {
-    mockTVShowRepository = MockTVShowRepository();
+    mockTVShowRepository = MockTvRepository();
     usecase = RemoveWatchlist(mockTVShowRepository);
   });
 

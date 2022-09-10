@@ -26,8 +26,6 @@ class SearchTvBloc extends Bloc<SearchTvEvent, SearchTvState> {
           (data) => data.isNotEmpty
               ? emit(SearchTvLoaded(data))
               : emit(SearchTvEmpty()));
-    }),
-    transformer: debounce(const Duration(milliseconds: 500))
-    );
+    }), transformer: debounce(const Duration(milliseconds: 500)));
   }
 }

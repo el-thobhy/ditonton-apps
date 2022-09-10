@@ -34,8 +34,7 @@ class TvRemoteDataSourceImpl implements TvRemoteDataSource {
 
   @override
   Future<List<TvModel>> getPopularTv() async {
-    final response =
-        await client.get(Uri.parse('$baseUrl/tv/popular?$apiKey'));
+    final response = await client.get(Uri.parse('$baseUrl/tv/popular?$apiKey'));
 
     if (response.statusCode == 200) {
       return TvResponse.fromJson(json.decode(response.body)).tvList;
@@ -57,8 +56,8 @@ class TvRemoteDataSourceImpl implements TvRemoteDataSource {
 
   @override
   Future<List<TvModel>> getTvRecommendations(int id) async {
-    final response = await client
-        .get(Uri.parse('$baseUrl/tv/$id/recommendations?$apiKey'));
+    final response =
+        await client.get(Uri.parse('$baseUrl/tv/$id/recommendations?$apiKey'));
 
     if (response.statusCode == 200) {
       return TvResponse.fromJson(json.decode(response.body)).tvList;
@@ -81,8 +80,8 @@ class TvRemoteDataSourceImpl implements TvRemoteDataSource {
 
   @override
   Future<List<TvModel>> searchTv(String query) async {
-    final response = await client
-        .get(Uri.parse('$baseUrl/search/tv?$apiKey&query=$query'));
+    final response =
+        await client.get(Uri.parse('$baseUrl/search/tv?$apiKey&query=$query'));
 
     if (response.statusCode == 200) {
       return TvResponse.fromJson(json.decode(response.body)).tvList;

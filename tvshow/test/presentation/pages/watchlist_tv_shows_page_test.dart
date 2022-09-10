@@ -1,13 +1,15 @@
 import 'package:core/domain/entities/tv_show.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mockito/annotations.dart';
 import 'package:tvshow/presentation/bloc/watchlist_tv_bloc.dart';
 import 'package:tvshow/presentation/pages/watchlist_tv_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-import '../mocks/bloc_helper_mocks.dart';
+import 'watchlist_tv_shows_page_test.mocks.dart';
 
+@GenerateMocks([WatchlistTvBloc])
 void main() {
   late MockWatchlistTvBloc mockWatchlistTvBloc;
 
@@ -26,23 +28,6 @@ void main() {
 
   testWidgets('Page should display circular progress bar when loading',
       (WidgetTester tester) async {
-    // when(mockWatchlistTvBloc.state).thenReturn(WatchlistTvLoading());
-    when(mockWatchlistTvBloc.stream)
-        .thenAnswer((_) => Stream.value(WatchlistTvLoading()));
-    when(mockWatchlistTvBloc.state).thenReturn(WatchlistTvLoading());
-
-    final progressBarFinder = find.byType(CircularProgressIndicator);
-    final centerFinder = find.byType(Center);
-
-    await tester.pumpWidget(makeTestableWidget(const WatchlistTvPage()));
-
-    expect(centerFinder, findsOneWidget);
-    expect(progressBarFinder, findsOneWidget);
-  });
-
-  testWidgets('Page should display circular progress bar when loading',
-      (WidgetTester tester) async {
-    // when(mockWatchlistTvBloc.state).thenReturn(WatchlistTvLoading());
     when(mockWatchlistTvBloc.stream)
         .thenAnswer((_) => Stream.value(WatchlistTvLoading()));
     when(mockWatchlistTvBloc.state).thenReturn(WatchlistTvLoading());

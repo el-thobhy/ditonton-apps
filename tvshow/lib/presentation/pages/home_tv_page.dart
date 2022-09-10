@@ -50,9 +50,9 @@ class HomeTvPageState extends State<HomeTvPage> {
                   return const Center(
                     child: CircularProgressIndicator(),
                   );
-                } else if (state is NowPlayingTvLoaded){
+                } else if (state is NowPlayingTvLoaded) {
                   return TvList(state.result);
-                } else if(state is NowPlayingTvError){
+                } else if (state is NowPlayingTvError) {
                   return const Text('Failed to fetch data');
                 }
                 return Container();
@@ -72,9 +72,9 @@ class HomeTvPageState extends State<HomeTvPage> {
                   return const Center(
                     child: CircularProgressIndicator(),
                   );
-                } else if (state is PopularTvLoaded){
+                } else if (state is PopularTvLoaded) {
                   return TvList(state.result);
-                } else if(state is PopularTvError){
+                } else if (state is PopularTvError) {
                   return const Text('Failed to fetch data');
                 }
                 return Container();
@@ -94,9 +94,9 @@ class HomeTvPageState extends State<HomeTvPage> {
                   return const Center(
                     child: CircularProgressIndicator(),
                   );
-                } else if (state is TopRatedTvLoaded){
+                } else if (state is TopRatedTvLoaded) {
                   return TvList(state.result);
-                } else if(state is TopRatedTvError){
+                } else if (state is TopRatedTvError) {
                   return const Text('Failed to fetch data');
                 }
                 return Container();

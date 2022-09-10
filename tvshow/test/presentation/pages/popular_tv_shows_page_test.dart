@@ -1,13 +1,15 @@
 import 'package:core/domain/entities/tv_show.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mockito/annotations.dart';
 import 'package:tvshow/presentation/bloc/popular_tv_bloc.dart';
 import 'package:tvshow/presentation/pages/popular_tv_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-import '../mocks/bloc_helper_mocks.dart';
+import 'popular_tv_shows_page_test.mocks.dart';
 
+@GenerateMocks([PopularTvBloc])
 void main() {
   late MockPopularTvBloc mockPopularTvBloc;
 
@@ -25,7 +27,7 @@ void main() {
   }
 
   testWidgets(
-      'Home page should display circular progress indicator bar when loading',
+      'page should display circular progress indicator bar when loading',
       (WidgetTester tester) async {
     when(mockPopularTvBloc.stream)
         .thenAnswer((_) => Stream.value(PopularTvLoading()));
@@ -40,8 +42,7 @@ void main() {
     expect(progressBarFinder, findsOneWidget);
   });
 
-  testWidgets(
-      'Home page should display list view when data loaded',
+  testWidgets('page should display list view when data loaded',
       (WidgetTester tester) async {
     final tvList = <TvShow>[];
     when(mockPopularTvBloc.stream)
@@ -55,7 +56,7 @@ void main() {
     expect(listviewData, findsOneWidget);
   });
 
-  testWidgets('Home page should add notification message when data Error',
+  testWidgets('page should add notification message when data Error',
       (WidgetTester tester) async {
     when(mockPopularTvBloc.stream)
         .thenAnswer((_) => Stream.value(const PopularTvError('Error message')));
@@ -69,12 +70,11 @@ void main() {
     expect(textFinder, findsOneWidget);
   });
 
-   testWidgets('Home page should display empty container when data Empty',
+  testWidgets('page should display empty container when data Empty',
       (WidgetTester tester) async {
     when(mockPopularTvBloc.stream)
-        .thenAnswer((_) => Stream.value( PopularTvEmpty()));
-    when(mockPopularTvBloc.state)
-        .thenReturn(PopularTvEmpty());
+        .thenAnswer((_) => Stream.value(PopularTvEmpty()));
+    when(mockPopularTvBloc.state).thenReturn(PopularTvEmpty());
 
     final finder = find.byType(Container);
 

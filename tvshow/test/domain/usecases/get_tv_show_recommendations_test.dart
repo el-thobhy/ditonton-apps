@@ -5,14 +5,12 @@ import 'package:tvshow/domain/usecases/tv_show/get_tv_show_recommendations.dart'
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-
-
 void main() {
   late GetTvRecommendations usecase;
-  late MockTVShowRepository mockTVShowRepository;
+  late MockTvRepository mockTVShowRepository;
 
   setUp(() {
-    mockTVShowRepository = MockTVShowRepository();
+    mockTVShowRepository = MockTvRepository();
     usecase = GetTvRecommendations(mockTVShowRepository);
   });
 

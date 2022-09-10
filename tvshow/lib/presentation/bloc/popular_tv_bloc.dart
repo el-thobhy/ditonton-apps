@@ -7,8 +7,7 @@ import 'package:tvshow/domain/usecases/tv_show/get_popular_tv_shows.dart';
 part 'popular_tv_event.dart';
 part 'popular_tv_state.dart';
 
-class PopularTvBloc
-    extends Bloc<PopularTvEvent, PopularTvState> {
+class PopularTvBloc extends Bloc<PopularTvEvent, PopularTvState> {
   final GetPopularTv _popularTvs;
 
   EventTransformer<T> debounce<T>(Duration duration) {

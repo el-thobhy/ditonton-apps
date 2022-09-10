@@ -7,33 +7,34 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:tvshow/domain/usecases/tv_show/get_tv_show_detail.dart';
 import 'package:tvshow/domain/usecases/tv_show/get_tv_show_recommendations.dart';
+import 'package:tvshow/domain/usecases/tv_show/get_watchlist_status_tv_show.dart';
 import 'package:tvshow/domain/usecases/tv_show/remove_watchlist.dart';
 import 'package:tvshow/domain/usecases/tv_show/save_watchlist.dart';
 import 'package:tvshow/presentation/bloc/tv_detail_bloc.dart';
 
 import '../../dummy_data/dummy_objects.dart';
-import '../../helper/tv_show_detail_bloc_test.mocks.dart';
+import 'tv_detail_bloc_test.mocks.dart';
 
 @GenerateMocks([
   GetTvDetail,
   GetTvRecommendations,
-  MockGetWatchListStatusTVShow,
+  GetWatchListStatusTv,
   SaveWatchlist,
   RemoveWatchlist,
 ])
 void main() {
   late TvDetailBloc bloc;
-  late MockGetTVShowDetail mockGetTvDetail;
-  late MockGetTVShowRecommendations mockGetTvRecommendations;
-  late MockGetWatchListStatusTVShow mockGetWatchlistStatus;
+  late MockGetTvDetail mockGetTvDetail;
+  late MockGetTvRecommendations mockGetTvRecommendations;
+  late MockGetWatchListStatusTv mockGetWatchlistStatus;
   late MockSaveWatchlist mockSaveWatchlist;
   late MockRemoveWatchlist mockRemoveWatchlist;
 
   setUp(() {
-    mockGetTvDetail = MockGetTVShowDetail();
+    mockGetTvDetail = MockGetTvDetail();
 
-    mockGetTvRecommendations = MockGetTVShowRecommendations();
-    mockGetWatchlistStatus = MockGetWatchListStatusTVShow();
+    mockGetTvRecommendations = MockGetTvRecommendations();
+    mockGetWatchlistStatus = MockGetWatchListStatusTv();
     mockSaveWatchlist = MockSaveWatchlist();
     mockRemoveWatchlist = MockRemoveWatchlist();
     bloc = TvDetailBloc(

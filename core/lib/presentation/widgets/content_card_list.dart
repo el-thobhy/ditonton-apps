@@ -11,7 +11,8 @@ class ContentCardList extends StatelessWidget {
   final DrawerItem activeDrawerItem;
   final String routeName;
 
-  const ContentCardList({Key? key,
+  const ContentCardList({
+    Key? key,
     required this.activeDrawerItem,
     this.movie,
     this.tvShow,
@@ -78,7 +79,8 @@ class ContentCardList extends StatelessWidget {
                         child: CircularProgressIndicator(),
                       ),
                     ),
-                    errorWidget: (context, url, error) => const Icon(Icons.error),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
                   ),
                 ),
               ),
