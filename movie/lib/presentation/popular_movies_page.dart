@@ -1,25 +1,25 @@
 import 'package:core/common/drawer_item_enum.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tvshow/presentation/bloc/popular_tv_bloc.dart';
-import 'package:tvshow/presentation/pages/tv_detail_page.dart';
+import 'package:movie/presentation/bloc/popular_movie_bloc.dart';
+import 'package:movie/presentation/movie_detail_page.dart';
 import 'package:core/presentation/widgets/content_card_list.dart';
 import 'package:flutter/material.dart';
 
-class PopularTvsPage extends StatefulWidget {
-  static const routeName = '/popular-tvshow';
+class PopularMoviesPage extends StatefulWidget {
+  static const routeName = '/popular-movie';
 
-  const PopularTvsPage({Key? key}) : super(key: key);
+  const PopularMoviesPage({Key? key}) : super(key: key);
 
   @override
-  PopularTvsPageState createState() => PopularTvsPageState();
+  PopularMoviesPageState createState() => PopularMoviesPageState();
 }
 
-class PopularTvsPageState extends State<PopularTvsPage> {
+class PopularMoviesPageState extends State<PopularMoviesPage> {
   @override
   void initState() {
     super.initState();
     Future.microtask(() {
-      context.read<PopularTvBloc>().add(const OnFetchPopular());
+      context.read<PopularMovieBloc>().add(const OnFetchPopular());
     });
   }
 
@@ -27,38 +27,37 @@ class PopularTvsPageState extends State<PopularTvsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Popular Tvs'),
+        title: const Text('Popular Movies'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: BlocBuilder<PopularTvBloc, PopularTvState>(
+        child: BlocBuilder<PopularMovieBloc, PopularMovieState>(
           builder: (context, state) {
-            if (state is PopularTvLoading) {
+            if (state is PopularMovieLoading) {
               return const Center(
                 child: CircularProgressIndicator(),
               );
-            } else if (state is PopularTvLoaded) {
+            } else if (state is PopularMovieLoaded) {
               return ListView.builder(
                 itemBuilder: (context, index) {
-                  final tv = state.result[index];
+                  final movie = state.result[index];
 
                   return ContentCardList(
-                    activeDrawerItem: DrawerItem.tvShow,
-                    routeName: TVShowDetailPage.routeName,
-                    tvShow: tv,
+                    activeDrawerItem: DrawerItem.movie,
+                    routeName: MovieDetailPage.routeName,
+                    movie: movie,
                   );
                 },
                 itemCount: state.result.length,
               );
-            } else if (state is PopularTvError) {
+            } else if(state is PopularMovieError) {
               return Center(
                 key: const Key('error_message'),
                 child: Text(state.message),
               );
-            } else if (state is PopularTvEmpty) {
+            } else {
               return Container();
             }
-            return Container();
           },
         ),
       ),

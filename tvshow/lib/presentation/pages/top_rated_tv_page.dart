@@ -55,9 +55,10 @@ class TopRatedTvsPageState extends State<TopRatedTvsPage> {
                 key: const Key('error_message'),
                 child: Text(state.message),
               );
-            } else {
+            } else if (state is TopRatedTvEmpty) {
               return Container();
             }
+            return Container();
           },
         ),
       ),

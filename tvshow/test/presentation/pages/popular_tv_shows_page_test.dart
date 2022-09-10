@@ -24,9 +24,9 @@ void main() {
     );
   }
 
-  testWidgets('Page should display center progress bar when loading',
+  testWidgets(
+      'Home page should display circular progress indicator bar when loading',
       (WidgetTester tester) async {
-    // when(mockPopularTvBloc.state).thenReturn(PopularTvLoading());
     when(mockPopularTvBloc.stream)
         .thenAnswer((_) => Stream.value(PopularTvLoading()));
     when(mockPopularTvBloc.state).thenReturn(PopularTvLoading());
@@ -41,35 +41,18 @@ void main() {
   });
 
   testWidgets(
-      'Home page should display circular progress indicator bar when loading',
-      (WidgetTester tester) async {
-    // when(mockPopularTvBloc.state).thenReturn(PopularTvLoading());
-    when(mockPopularTvBloc.stream)
-        .thenAnswer((_) => Stream.value(PopularTvLoading()));
-    when(mockPopularTvBloc.state).thenReturn(PopularTvLoading());
-
-    final progressBarFinder = find.byType(CircularProgressIndicator);
-    final centerFinder = find.byType(Center);
-
-    await tester.pumpWidget(makeTestableWidget(const PopularTvsPage()));
-
-    expect(centerFinder, findsOneWidget);
-    expect(progressBarFinder, findsOneWidget);
-  });
-
-  testWidgets(
-      'Home page should display circular progress indicator bar when loading',
+      'Home page should display list view when data loaded',
       (WidgetTester tester) async {
     final tvList = <TvShow>[];
     when(mockPopularTvBloc.stream)
         .thenAnswer((_) => Stream.value(PopularTvLoaded(tvList)));
     when(mockPopularTvBloc.state).thenReturn(PopularTvLoaded(tvList));
 
-    final listViewFinder = find.byType(ListView);
+    final listviewData = find.byType(ListView);
 
     await tester.pumpWidget(makeTestableWidget(const PopularTvsPage()));
 
-    expect(listViewFinder, findsOneWidget);
+    expect(listviewData, findsOneWidget);
   });
 
   testWidgets('Home page should add notification message when data Error',
@@ -84,5 +67,19 @@ void main() {
     await tester.pumpWidget(makeTestableWidget(const PopularTvsPage()));
 
     expect(textFinder, findsOneWidget);
+  });
+
+   testWidgets('Home page should display empty container when data Empty',
+      (WidgetTester tester) async {
+    when(mockPopularTvBloc.stream)
+        .thenAnswer((_) => Stream.value( PopularTvEmpty()));
+    when(mockPopularTvBloc.state)
+        .thenReturn(PopularTvEmpty());
+
+    final finder = find.byType(Container);
+
+    await tester.pumpWidget(makeTestableWidget(const PopularTvsPage()));
+
+    expect(finder, findsOneWidget);
   });
 }

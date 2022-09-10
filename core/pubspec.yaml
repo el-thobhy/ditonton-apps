@@ -24,6 +24,7 @@ dependencies:
   flutter_rating_bar: ^4.0.1
   flutter_bloc: ^8.1.1
   firebase_crashlytics: ^2.8.10
+  test_cov_console: ^0.2.2
 
   about:
     path: ../about

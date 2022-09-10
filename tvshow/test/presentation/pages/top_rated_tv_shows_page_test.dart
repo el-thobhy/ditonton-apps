@@ -26,23 +26,6 @@ void main() {
 
   testWidgets('Home Page should display circular progress bar when loading',
       (WidgetTester tester) async {
-    // when(mockTopRatedTvBloc.state).thenReturn(TopRatedTvLoading());
-    when(mockTopRatedTvBloc.stream)
-        .thenAnswer((_) => Stream.value(TopRatedTvLoading()));
-    when(mockTopRatedTvBloc.state).thenReturn(TopRatedTvLoading());
-
-    final progressBarFinder = find.byType(CircularProgressIndicator);
-    final centerFinder = find.byType(Center);
-
-    await tester.pumpWidget(makeTestableWidget(const TopRatedTvsPage()));
-
-    expect(centerFinder, findsOneWidget);
-    expect(progressBarFinder, findsOneWidget);
-  });
-
-  testWidgets('Home Page display circular progress bar when loading',
-      (WidgetTester tester) async {
-    // when(mockTopRatedTvBloc.state).thenReturn(TopRatedTvLoading());
     when(mockTopRatedTvBloc.stream)
         .thenAnswer((_) => Stream.value(TopRatedTvLoading()));
     when(mockTopRatedTvBloc.state).thenReturn(TopRatedTvLoading());
@@ -82,5 +65,20 @@ void main() {
     await tester.pumpWidget(makeTestableWidget(const TopRatedTvsPage()));
 
     expect(textFinder, findsOneWidget);
+  });
+
+  
+   testWidgets('Home page should display empty container when data Empty',
+      (WidgetTester tester) async {
+    when(mockTopRatedTvBloc.stream)
+        .thenAnswer((_) => Stream.value( TopRatedTvEmpty()));
+    when(mockTopRatedTvBloc.state)
+        .thenReturn(TopRatedTvEmpty());
+
+    final finder = find.byType(Container);
+
+    await tester.pumpWidget(makeTestableWidget(const TopRatedTvsPage()));
+
+    expect(finder, findsOneWidget);
   });
 }

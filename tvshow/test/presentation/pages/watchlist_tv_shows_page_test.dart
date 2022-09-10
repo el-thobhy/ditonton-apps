@@ -8,8 +8,6 @@ import 'package:mockito/mockito.dart';
 
 import '../mocks/bloc_helper_mocks.dart';
 
-
-
 void main() {
   late MockWatchlistTvBloc mockWatchlistTvBloc;
 
@@ -52,13 +50,11 @@ void main() {
     final progressBarFinder = find.byType(CircularProgressIndicator);
     final centerFinder = find.byType(Center);
 
-    await tester.pumpWidget(makeTestableWidget( const WatchlistTvPage()));
+    await tester.pumpWidget(makeTestableWidget(const WatchlistTvPage()));
 
     expect(centerFinder, findsOneWidget);
     expect(progressBarFinder, findsOneWidget);
   });
-
-
 
   testWidgets('Page should display Data when data is loaded',
       (WidgetTester tester) async {
@@ -69,23 +65,35 @@ void main() {
 
     final listViewFinder = find.byType(ListView);
 
-    await tester.pumpWidget(makeTestableWidget( const WatchlistTvPage()));
+    await tester.pumpWidget(makeTestableWidget(const WatchlistTvPage()));
 
     expect(listViewFinder, findsOneWidget);
   });
 
-
-
   testWidgets('Page should display text with message when Error',
       (WidgetTester tester) async {
-    when(mockWatchlistTvBloc.stream)
-        .thenAnswer((_) => Stream.value( const WatchlistTvError('Error message')));
-    when(mockWatchlistTvBloc.state).thenReturn( const WatchlistTvError('Error message'));
+    when(mockWatchlistTvBloc.stream).thenAnswer(
+        (_) => Stream.value(const WatchlistTvError('Error message')));
+    when(mockWatchlistTvBloc.state)
+        .thenReturn(const WatchlistTvError('Error message'));
 
     final textFinder = find.byKey(const Key('error_message'));
 
-    await tester.pumpWidget(makeTestableWidget( const WatchlistTvPage()));
+    await tester.pumpWidget(makeTestableWidget(const WatchlistTvPage()));
 
     expect(textFinder, findsOneWidget);
+  });
+
+  testWidgets('Home page should display empty container when data Empty',
+      (WidgetTester tester) async {
+    when(mockWatchlistTvBloc.stream)
+        .thenAnswer((_) => Stream.value(WatchlistTvEmpty()));
+    when(mockWatchlistTvBloc.state).thenReturn(WatchlistTvEmpty());
+
+    final finder = find.byType(Container);
+
+    await tester.pumpWidget(makeTestableWidget(const WatchlistTvPage()));
+
+    expect(finder, findsOneWidget);
   });
 }

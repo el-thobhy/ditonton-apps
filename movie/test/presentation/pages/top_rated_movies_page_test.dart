@@ -2,7 +2,6 @@ import 'package:core/domain/entities/movie.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie/presentation/bloc/top_rated_movie_bloc.dart';
 import 'package:movie/presentation/pages/top_rated_movies_page.dart';
-import 'package:core/presentation/provider/top_rated_movies_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -10,7 +9,7 @@ import 'package:mockito/mockito.dart';
 
 import '../mock/top_rated_movies_page_test_mock.dart';
 
-@GenerateMocks([TopRatedMoviesNotifier])
+@GenerateMocks([TopRatedMovieBloc])
 void main() {
   late MockTopRatedMoviesBloc mockBloc;
 

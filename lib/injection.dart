@@ -8,7 +8,7 @@ import 'package:core/data/repositories/movie_repository_impl.dart';
 import 'package:core/data/repositories/tv_show_repository_impl.dart';
 import 'package:core/domain/repositories/movie_repository.dart';
 import 'package:core/domain/repositories/tv_show_repository.dart';
-import 'package:core/presentation/provider/home_notifier.dart';
+import 'package:core/presentation/pages/home_page.dart';
 import 'package:get_it/get_it.dart';
 
 import 'package:movie/domain/usecases/movie/get_movie_detail.dart';
@@ -36,7 +36,6 @@ import 'package:movie/presentation/bloc/movie_detail_bloc.dart';
 import 'package:movie/presentation/bloc/now_playing_movie_bloc.dart';
 import 'package:movie/presentation/bloc/popular_movie_bloc.dart';
 import 'package:movie/presentation/bloc/top_rated_movie_bloc.dart';
-import 'package:search/domain/usecases/search_tv_shows.dart';
 import 'package:search/search.dart';
 import 'package:tvshow/presentation/bloc/now_playing_tv_bloc.dart';
 import 'package:tvshow/presentation/bloc/popular_tv_bloc.dart';

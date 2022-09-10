@@ -48,6 +48,8 @@ class WatchlistTvPageState extends State<WatchlistTvPage> {
               key: const Key('error_message'),
               child: Text(state.message),
             );
+          } else if(state is WatchlistTvEmpty){
+            return Container();
           }
           return Center(
             child: Text('No watchlist tv show yet!', style: kBodyText),
