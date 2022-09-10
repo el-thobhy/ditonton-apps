@@ -1,35 +1,36 @@
-import 'package:ditonton_apps/common/constants.dart';
-import 'package:ditonton_apps/common/drawer_item_enum.dart';
+import 'package:core/common/drawer_item_enum.dart';
+import 'package:core/core.dart';
 import 'package:ditonton_apps/presentation/pages/about_page.dart';
-import 'package:ditonton_apps/presentation/pages/home_movie_page.dart';
-import 'package:ditonton_apps/presentation/pages/home_tv_show_page.dart';
-import 'package:ditonton_apps/presentation/pages/search_page.dart';
+import 'package:movie/presentation/pages/home_movie_page.dart';
+import 'package:search/presentation/pages/search_movie_page.dart';
+import 'package:search/presentation/pages/search_tv_page.dart';
 import 'package:ditonton_apps/presentation/pages/watchlist_page.dart';
-import 'package:ditonton_apps/presentation/provider/home_notifier.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:tvshow/presentation/pages/home_tv_page.dart';
 
-class HomeDrawerPage extends StatelessWidget {
-  static const ROUTE_NAME = '/home';
-
-  final GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
-
-  HomeDrawerPage({Key? key}) : super(key: key);
+class HomeDrawerPage extends StatefulWidget {
+  static const routeName = '/home';
+  const HomeDrawerPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return Consumer<HomeDrawerNotifier>(builder: (ctx, data, child) {
-      final activeDrawerItem = data.selectedDrawerItem;
+  State<HomeDrawerPage> createState() => _HomeDrawerPageState();
+}
 
-      return Scaffold(
-        key: _drawerKey,
-        drawer: _buildDrawer(ctx, (DrawerItem newSelectedItem) {
-          data.setSelectedDrawerItem(newSelectedItem);
-        }, activeDrawerItem),
-        appBar: _buildAppBar(ctx, activeDrawerItem),
-        body: _buildBody(ctx, activeDrawerItem),
-      );
-    });
+class _HomeDrawerPageState extends State<HomeDrawerPage> {
+  final GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
+  DrawerItem _selectedDrawerItem = DrawerItem.movie;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      key: _drawerKey,
+      drawer: _buildDrawer(context, (DrawerItem newSelectedItem) {
+        setState(() {
+          _selectedDrawerItem = newSelectedItem;
+        });
+      }, _selectedDrawerItem),
+      appBar: _buildAppBar(context, _selectedDrawerItem),
+      body: _buildBody(context, _selectedDrawerItem),
+    );
   }
 
   Widget _buildBody(BuildContext context, DrawerItem seletedDrawerItem) {
@@ -44,22 +45,32 @@ class HomeDrawerPage extends StatelessWidget {
   AppBar _buildAppBar(
     BuildContext context,
     DrawerItem activeDrawerItem,
-  ) =>
-      AppBar(
-        title: const Text('Ditonton'),
-        actions: [
-          IconButton(
-            onPressed: () {
+  ) {
+    return AppBar(
+      title: const Text('Ditonton'),
+      actions: [
+        IconButton(
+          onPressed: () {
+            if (activeDrawerItem == DrawerItem.movie) {
               Navigator.pushNamed(
                 context,
-                SearchPage.ROUTE_NAME,
+                SearchPage.routeName,
                 arguments: activeDrawerItem,
               );
-            },
-            icon: const Icon(Icons.search),
-          )
-        ],
-      );
+            }
+            if (activeDrawerItem == DrawerItem.tvShow) {
+              Navigator.pushNamed(
+                context,
+                SearchTvPage.routeName,
+                arguments: activeDrawerItem,
+              );
+            }
+          },
+          icon: const Icon(Icons.search),
+        )
+      ],
+    );
+  }
 
   Drawer _buildDrawer(
     BuildContext context,
@@ -101,13 +112,13 @@ class HomeDrawerPage extends StatelessWidget {
               title: const Text('Watchlist'),
               onTap: () {
                 Navigator.pop(context);
-                Navigator.pushNamed(context, WatchlistPage.ROUTE_NAME);
+                Navigator.pushNamed(context, WatchlistPage.routeName);
               },
             ),
             ListTile(
               onTap: () {
                 Navigator.pop(context);
-                Navigator.pushNamed(context, AboutPage.ROUTE_NAME);
+                Navigator.pushNamed(context, AboutPage.routeName);
               },
               leading: const Icon(Icons.info_outline),
               title: const Text('About'),

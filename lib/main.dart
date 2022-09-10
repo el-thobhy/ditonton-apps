@@ -1,77 +1,86 @@
-import 'package:ditonton_apps/common/constants.dart';
-import 'package:ditonton_apps/common/drawer_item_enum.dart';
-import 'package:ditonton_apps/injection.dart' as di;
+import 'package:core/common/ssl_pinning/ssl_pinning.dart';
+import 'package:core/core.dart';
+import 'package:core/common/drawer_item_enum.dart';
 import 'package:ditonton_apps/presentation/pages/about_page.dart';
+import 'package:ditonton_apps/injection.dart' as di;
 import 'package:ditonton_apps/presentation/pages/home_drawer_page.dart';
-import 'package:ditonton_apps/presentation/pages/movie_detail_page.dart';
-import 'package:ditonton_apps/presentation/pages/popular_movies_page.dart';
-import 'package:ditonton_apps/presentation/pages/popular_tv_shows_page.dart';
-import 'package:ditonton_apps/presentation/pages/search_page.dart';
-import 'package:ditonton_apps/presentation/pages/top_rated_movies_page.dart';
-import 'package:ditonton_apps/presentation/pages/top_rated_tv_shows_page.dart';
-import 'package:ditonton_apps/presentation/pages/tv_show_detail_page.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie/presentation/bloc/movie_detail_bloc.dart';
+import 'package:movie/presentation/bloc/now_playing_movie_bloc.dart';
+import 'package:movie/presentation/bloc/popular_movie_bloc.dart';
+import 'package:movie/presentation/bloc/top_rated_movie_bloc.dart';
+import 'package:movie/presentation/bloc/watchlist_movie_bloc.dart';
+import 'package:movie/presentation/pages/movie_detail_page.dart';
+import 'package:movie/presentation/pages/popular_movies_page.dart';
+import 'package:movie/presentation/pages/top_rated_movies_page.dart';
+import 'package:search/presentation/bloc/movie/search_movie_bloc.dart';
+import 'package:search/presentation/bloc/tvshow/search_tv_bloc.dart';
+import 'package:search/presentation/pages/search_movie_page.dart';
 import 'package:ditonton_apps/presentation/pages/watchlist_page.dart';
-import 'package:ditonton_apps/presentation/provider/home_notifier.dart';
-import 'package:ditonton_apps/presentation/provider/movie_detail_notifier.dart';
-import 'package:ditonton_apps/presentation/provider/movie_list_notifier.dart';
-import 'package:ditonton_apps/presentation/provider/popular_movies_notifier.dart';
-import 'package:ditonton_apps/presentation/provider/popular_tv_shows_notifier.dart';
-import 'package:ditonton_apps/presentation/provider/search_notifier.dart';
-import 'package:ditonton_apps/presentation/provider/top_rated_movies_notifier.dart';
-import 'package:ditonton_apps/presentation/provider/top_rated_tv_shows_notifier.dart';
-import 'package:ditonton_apps/presentation/provider/tv_show_detail_notifier.dart';
-import 'package:ditonton_apps/presentation/provider/tv_show_list_notifier.dart';
-import 'package:ditonton_apps/presentation/provider/watchlist_movie_notifier.dart';
-import 'package:ditonton_apps/presentation/provider/watchlist_tv_show_notifier.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:search/presentation/pages/search_tv_page.dart';
+import 'package:tvshow/presentation/bloc/now_playing_tv_bloc.dart';
+import 'package:tvshow/presentation/bloc/popular_tv_bloc.dart';
+import 'package:tvshow/presentation/bloc/top_rated_tv_bloc.dart';
+import 'package:tvshow/presentation/bloc/tv_detail_bloc.dart';
+import 'package:tvshow/presentation/bloc/watchlist_tv_bloc.dart';
+import 'package:tvshow/presentation/pages/popular_tv_page.dart';
+import 'package:tvshow/presentation/pages/top_rated_tv_page.dart';
+import 'package:tvshow/presentation/pages/tv_detail_page.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SSLpinning.init();
+  await Firebase.initializeApp();
   di.init();
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (_) => di.locator<MovieListNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<NowPlayingMovieBloc>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<TvListNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<NowPlayingTvBloc>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<MovieDetailNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<MovieDetailBloc>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<TvDetailNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<TvDetailBloc>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<SearchNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<SearchMovieBloc>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<TopRatedMoviesNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<SearchTvBloc>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<TopRatedTvNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<TopRatedMovieBloc>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<PopularMoviesNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<TopRatedTvBloc>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<PopularTvNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<PopularMovieBloc>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<WatchlistMovieNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<PopularTvBloc>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<WatchlistTvNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<WatchlistMovieBloc>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<HomeDrawerNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<WatchlistTvBloc>(),
         ),
       ],
       child: MaterialApp(
@@ -82,41 +91,51 @@ class MyApp extends StatelessWidget {
           textTheme: kTextTheme,
           colorScheme: kColorScheme.copyWith(secondary: kMikadoYellow),
         ),
-        home: HomeDrawerPage(),
+        home: const HomeDrawerPage(),
         onGenerateRoute: (RouteSettings settings) {
           switch (settings.name) {
-            case HomeDrawerPage.ROUTE_NAME:
-              return MaterialPageRoute(builder: (_) => HomeDrawerPage());
-            case PopularMoviesPage.ROUTE_NAME:
-              return CupertinoPageRoute(builder: (_) => const PopularMoviesPage());
-            case PopularTVShowsPage.ROUTE_NAME:
-              return CupertinoPageRoute(builder: (_) => const PopularTVShowsPage());
-            case TopRatedMoviesPage.ROUTE_NAME:
-              return CupertinoPageRoute(builder: (_) => const TopRatedMoviesPage());
-            case TopRatedTVShowsPage.ROUTE_NAME:
-              return CupertinoPageRoute(builder: (_) => const TopRatedTVShowsPage());
-            case MovieDetailPage.ROUTE_NAME:
+            case HomeDrawerPage.routeName:
+              return MaterialPageRoute(builder: (_) => const HomeDrawerPage());
+            case PopularMoviesPage.routeName:
+              return CupertinoPageRoute(
+                  builder: (_) => const PopularMoviesPage());
+            case PopularTvsPage.routeName:
+              return CupertinoPageRoute(builder: (_) => const PopularTvsPage());
+            case TopRatedMoviesPage.routeName:
+              return CupertinoPageRoute(
+                  builder: (_) => const TopRatedMoviesPage());
+            case TopRatedTvsPage.routeName:
+              return CupertinoPageRoute(
+                  builder: (_) => const TopRatedTvsPage());
+            case MovieDetailPage.routeName:
               final id = settings.arguments as int;
               return MaterialPageRoute(
                 builder: (_) => MovieDetailPage(id: id),
                 settings: settings,
               );
-            case TVShowDetailPage.ROUTE_NAME:
+            case TVShowDetailPage.routeName:
               final id = settings.arguments as int;
               return MaterialPageRoute(
                 builder: (_) => TVShowDetailPage(id: id),
                 settings: settings,
               );
-            case SearchPage.ROUTE_NAME:
+            case SearchPage.routeName:
               final activeDrawerItem = settings.arguments as DrawerItem;
               return CupertinoPageRoute(
                 builder: (_) => SearchPage(
                   activeDrawerItem: activeDrawerItem,
                 ),
               );
-            case WatchlistPage.ROUTE_NAME:
+            case SearchTvPage.routeName:
+              final activeDrawerItem = settings.arguments as DrawerItem;
+              return CupertinoPageRoute(
+                builder: (_) => SearchTvPage(
+                  activeDrawerItem: activeDrawerItem,
+                ),
+              );
+            case WatchlistPage.routeName:
               return MaterialPageRoute(builder: (_) => const WatchlistPage());
-            case AboutPage.ROUTE_NAME:
+            case AboutPage.routeName:
               return MaterialPageRoute(builder: (_) => const AboutPage());
             default:
               return MaterialPageRoute(builder: (_) {

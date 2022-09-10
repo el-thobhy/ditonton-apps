@@ -1,10 +1,10 @@
-import 'package:ditonton_apps/common/constants.dart';
-import 'package:ditonton_apps/presentation/pages/watchlist_movies_page.dart';
-import 'package:ditonton_apps/presentation/pages/watchlist_tv_shows_page.dart';
+import 'package:core/core.dart';
 import 'package:flutter/material.dart';
+import 'package:movie/presentation/pages/watchlist_movies_page.dart';
+import 'package:tvshow/presentation/pages/watchlist_tv_page.dart';
 
 class WatchlistPage extends StatelessWidget {
-  static const ROUTE_NAME = '/watchlist';
+  static const routeName = '/watchlist';
 
   const WatchlistPage({Key? key}) : super(key: key);
 
@@ -30,9 +30,9 @@ class WatchlistPage extends StatelessWidget {
             ),
           ];
         },
-        body: TabBarView(
+        body: const TabBarView(
           children: <Widget>[
-            const WatchlistMoviesPage(),
+            WatchlistMoviesPage(),
             WatchlistTvPage(),
           ],
         ),
