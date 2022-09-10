@@ -26,9 +26,6 @@ dependencies:
   firebase_crashlytics: ^2.8.10
   test_cov_console: ^0.2.2
 
-  about:
-    path: ../about
-
   search:
     path: ../search
 
@@ -37,7 +34,7 @@ dependencies:
 
   tvshow:
     path: ../tvshow
-
+    
 dev_dependencies:
   flutter_lints: ^2.0.0
 

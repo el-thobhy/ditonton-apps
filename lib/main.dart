@@ -1,10 +1,9 @@
-import 'package:about/about.dart';
 import 'package:core/common/ssl_pinning/ssl_pinning.dart';
 import 'package:core/core.dart';
 import 'package:core/common/drawer_item_enum.dart';
-import 'package:core/presentation/pages/home_page.dart';
+import 'package:ditonton_apps/presentation/pages/about_page.dart';
 import 'package:ditonton_apps/injection.dart' as di;
-import 'package:core/presentation/pages/home_drawer_page.dart';
+import 'package:ditonton_apps/presentation/pages/home_drawer_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie/presentation/bloc/movie_detail_bloc.dart';
@@ -18,7 +17,7 @@ import 'package:movie/presentation/pages/top_rated_movies_page.dart';
 import 'package:search/presentation/bloc/movie/search_movie_bloc.dart';
 import 'package:search/presentation/bloc/tvshow/search_tv_bloc.dart';
 import 'package:search/presentation/pages/search_movie_page.dart';
-import 'package:core/presentation/pages/watchlist_page.dart';
+import 'package:ditonton_apps/presentation/pages/watchlist_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -82,9 +81,6 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (_) => di.locator<WatchlistTvBloc>(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<HomeDrawerNotifier>(),
         ),
       ],
       child: MaterialApp(

@@ -8,7 +8,6 @@ import 'package:core/data/repositories/movie_repository_impl.dart';
 import 'package:core/data/repositories/tv_show_repository_impl.dart';
 import 'package:core/domain/repositories/movie_repository.dart';
 import 'package:core/domain/repositories/tv_show_repository.dart';
-import 'package:core/presentation/pages/home_page.dart';
 import 'package:get_it/get_it.dart';
 
 import 'package:movie/domain/usecases/movie/get_movie_detail.dart';
@@ -94,9 +93,6 @@ void init() {
   );
   locator.registerFactory(
     () => WatchlistTvBloc(locator()),
-  );
-  locator.registerFactory(
-    () => HomeDrawerNotifier(),
   );
 
   // use case
