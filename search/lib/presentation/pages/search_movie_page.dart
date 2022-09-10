@@ -55,22 +55,22 @@ class _SearchPageState extends State<SearchPage> {
             ),
             BlocBuilder<SearchMovieBloc, SearchMovieState>(
               builder: (context, state) {
-                if (state is SearchMovieEmpty) {
-                  return _buildErrorMessage();
-                } else if (state is SearchMovieError) {
-                  return _buildErrorMessage();
-                } else if (state is SearchMovieLoaded) {
-                  final result = state.result;
-                  return _buildMovieCardList(result);
-                } else if (state is SearchMovieLoading) {
+                if (state is SearchMovieLoading) {
                   return Container(
                     margin: const EdgeInsets.only(top: 32.0),
                     child: const Center(
                       child: CircularProgressIndicator(),
                     ),
                   );
+                } else if (state is SearchMovieError) {
+                  return _buildErrorMessage(state.message);
+                } else if (state is SearchMovieLoaded) {
+                  final result = state.result;
+                  return _buildMovieCardList(result);
+                } else if (state is SearchMovieEmpty) {
+                  return _buildNotFoundMessage();
                 }
-                return _buildErrorMessage();
+                return _buildEmptyMessage();
               },
             )
           ],
@@ -96,12 +96,34 @@ class _SearchPageState extends State<SearchPage> {
     );
   }
 
-  Widget _buildErrorMessage() => Container(
+  Widget _buildNotFoundMessage() => Container(
         margin: const EdgeInsets.only(top: 32.0),
         child: Center(
           key: const Key('error_message'),
           child: Text(
             '$_title not found!',
+            style: kBodyText,
+          ),
+        ),
+      );
+
+  Widget _buildErrorMessage(String message) => Container(
+        margin: const EdgeInsets.only(top: 32.0),
+        child: Center(
+          key: const Key('error_message'),
+          child: Text(
+            message,
+            style: kBodyText,
+          ),
+        ),
+      );
+
+  Widget _buildEmptyMessage() => Container(
+        margin: const EdgeInsets.only(top: 32.0),
+        child: Center(
+          key: const Key('error_message'),
+          child: Text(
+            'Empty',
             style: kBodyText,
           ),
         ),

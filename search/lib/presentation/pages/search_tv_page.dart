@@ -56,9 +56,9 @@ class _SearchTvPageState extends State<SearchTvPage> {
             BlocBuilder<SearchTvBloc, SearchTvState>(
               builder: (context, state) {
                 if (state is SearchTvEmpty) {
-                  return _buildErrorMessage();
+                  return _buildNotFoundMessage();
                 } else if (state is SearchTvError) {
-                  return _buildErrorMessage();
+                  return _buildErrorMessage(state.message);
                 } else if (state is SearchTvLoaded) {
                   final result = state.result;
                   return _buildTVShowCardList(result);
@@ -69,9 +69,8 @@ class _SearchTvPageState extends State<SearchTvPage> {
                       child: CircularProgressIndicator(),
                     ),
                   );
-                } else {
-                  return _buildErrorMessage();
                 }
+                return _buildEmptyMessage();
               },
             )
           ],
@@ -97,12 +96,34 @@ class _SearchTvPageState extends State<SearchTvPage> {
     );
   }
 
-  Widget _buildErrorMessage() => Container(
+  Widget _buildNotFoundMessage() => Container(
         margin: const EdgeInsets.only(top: 32.0),
         child: Center(
           key: const Key('error_message'),
           child: Text(
             '$_title not found!',
+            style: kBodyText,
+          ),
+        ),
+      );
+
+  Widget _buildErrorMessage(String message) => Container(
+        margin: const EdgeInsets.only(top: 32.0),
+        child: Center(
+          key: const Key('error_message'),
+          child: Text(
+            message,
+            style: kBodyText,
+          ),
+        ),
+      );
+
+  Widget _buildEmptyMessage() => Container(
+        margin: const EdgeInsets.only(top: 32.0),
+        child: Center(
+          key: const Key('error_message'),
+          child: Text(
+            'Empty',
             style: kBodyText,
           ),
         ),
