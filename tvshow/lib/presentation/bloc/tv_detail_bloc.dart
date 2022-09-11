@@ -4,11 +4,11 @@ import 'package:core/domain/entities/tv_show_detail.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tvshow/domain/usecases/tv_show/get_tv_show_detail.dart';
-import 'package:tvshow/domain/usecases/tv_show/get_tv_show_recommendations.dart';
-import 'package:tvshow/domain/usecases/tv_show/get_watchlist_status_tv_show.dart';
-import 'package:tvshow/domain/usecases/tv_show/remove_watchlist.dart';
-import 'package:tvshow/domain/usecases/tv_show/save_watchlist.dart';
+import 'package:core/domain/usecases/tv_show/get_tv_show_detail.dart';
+import 'package:core/domain/usecases/tv_show/get_tv_show_recommendations.dart';
+import 'package:core/domain/usecases/tv_show/get_watchlist_status_tv_show.dart';
+import 'package:core/domain/usecases/tv_show/remove_watchlist.dart';
+import 'package:core/domain/usecases/tv_show/save_watchlist.dart';
 
 part 'tv_detail_event.dart';
 part 'tv_detail_state.dart';

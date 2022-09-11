@@ -1,5 +1,5 @@
 import 'package:core/helpers/test_helper.mocks.dart';
-import 'package:movie/domain/usecases/movie/get_watchlist_status_movie.dart';
+import 'package:core/domain/usecases/movie/get_watchlist_status_movie.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 

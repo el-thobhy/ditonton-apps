@@ -5,11 +5,11 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:tvshow/domain/usecases/tv_show/get_tv_show_detail.dart';
-import 'package:tvshow/domain/usecases/tv_show/get_tv_show_recommendations.dart';
-import 'package:tvshow/domain/usecases/tv_show/get_watchlist_status_tv_show.dart';
-import 'package:tvshow/domain/usecases/tv_show/remove_watchlist.dart';
-import 'package:tvshow/domain/usecases/tv_show/save_watchlist.dart';
+import 'package:core/domain/usecases/tv_show/get_tv_show_detail.dart';
+import 'package:core/domain/usecases/tv_show/get_tv_show_recommendations.dart';
+import 'package:core/domain/usecases/tv_show/get_watchlist_status_tv_show.dart';
+import 'package:core/domain/usecases/tv_show/remove_watchlist.dart';
+import 'package:core/domain/usecases/tv_show/save_watchlist.dart';
 import 'package:tvshow/presentation/bloc/tv_detail_bloc.dart';
 
 import '../../dummy_data/dummy_objects.dart';
