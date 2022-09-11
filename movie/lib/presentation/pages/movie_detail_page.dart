@@ -53,7 +53,7 @@ class MovieDetailPageState extends State<MovieDetailPage> {
             } else if (state.detailState == RequestState.error) {
               return Text(state.message);
             } else {
-              return const Center(child: Text('Empty'));
+              return Center(child: Text(state.message));
             }
           },
           listener: (context, state) async {

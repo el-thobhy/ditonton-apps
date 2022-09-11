@@ -9,7 +9,7 @@ import 'package:core/common/failure.dart' as _i5;
 import 'package:core/domain/entities/movie.dart' as _i6;
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:movie/domain/usecases/movie/get_watchlist_movies.dart' as _i3;
+import 'package:core/domain/usecases/movie/get_watchlist_movies.dart' as _i3;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values

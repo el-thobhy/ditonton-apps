@@ -11,13 +11,13 @@ import 'package:core/domain/entities/tv_show_detail.dart' as _i7;
 import 'package:core/domain/repositories/tv_show_repository.dart' as _i2;
 import 'package:dartz/dartz.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:tvshow/domain/usecases/tv_show/get_tv_show_detail.dart' as _i4;
-import 'package:tvshow/domain/usecases/tv_show/get_tv_show_recommendations.dart'
+import 'package:core/domain/usecases/tv_show/get_tv_show_detail.dart' as _i4;
+import 'package:core/domain/usecases/tv_show/get_tv_show_recommendations.dart'
     as _i8;
-import 'package:tvshow/domain/usecases/tv_show/get_watchlist_status_tv_show.dart'
+import 'package:core/domain/usecases/tv_show/get_watchlist_status_tv_show.dart'
     as _i10;
-import 'package:tvshow/domain/usecases/tv_show/remove_watchlist.dart' as _i12;
-import 'package:tvshow/domain/usecases/tv_show/save_watchlist.dart' as _i11;
+import 'package:core/domain/usecases/tv_show/remove_watchlist.dart' as _i12;
+import 'package:core/domain/usecases/tv_show/save_watchlist.dart' as _i11;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values

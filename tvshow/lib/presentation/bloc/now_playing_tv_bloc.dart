@@ -2,7 +2,7 @@ import 'package:core/domain/entities/tv_show.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:tvshow/domain/usecases/tv_show/get_now_playing_tv_shows.dart';
+import 'package:core/domain/usecases/tv_show/get_now_playing_tv_shows.dart';
 
 part 'now_playing_tv_event.dart';
 part 'now_playing_tv_state.dart';

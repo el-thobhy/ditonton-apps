@@ -50,10 +50,10 @@ class HomeMoviePageState extends State<HomeMoviePage> {
                   return const Center(
                     child: CircularProgressIndicator(),
                   );
-                } else if (state is NowPlayingMovieLoaded){
+                } else if (state is NowPlayingMovieLoaded) {
                   return MovieList(state.result);
-                } else if(state is NowPlayingMovieError){
-                  return const Text('Failed to fetch data');
+                } else if (state is NowPlayingMovieError) {
+                  return Text(state.message);
                 }
                 return Container();
               },
@@ -72,10 +72,10 @@ class HomeMoviePageState extends State<HomeMoviePage> {
                   return const Center(
                     child: CircularProgressIndicator(),
                   );
-                } else if (state is PopularMovieLoaded){
+                } else if (state is PopularMovieLoaded) {
                   return MovieList(state.result);
-                } else if(state is PopularMovieError){
-                  return const Text('Failed to fetch data');
+                } else if (state is PopularMovieError) {
+                  return Text(state.message);
                 }
                 return Container();
               },
@@ -94,10 +94,10 @@ class HomeMoviePageState extends State<HomeMoviePage> {
                   return const Center(
                     child: CircularProgressIndicator(),
                   );
-                } else if (state is TopRatedMovieLoaded){
+                } else if (state is TopRatedMovieLoaded) {
                   return MovieList(state.result);
-                } else if(state is TopRatedMovieError){
-                  return const Text('Failed to fetch data');
+                } else if (state is TopRatedMovieError) {
+                  return Text(state.message);
                 }
                 return Container();
               },
