@@ -90,11 +90,21 @@ void main() {
     test('should return list of MovieTable from database', () async {
       // arrange
       when(mockDatabaseHelper.getWatchlistMovies())
-          .thenAnswer((_) async => [testMovieMap]);
+          .thenAnswer((_) async => [testMovieTable.toJson()]);
       // act
       final result = await dataSource.getWatchlistMovies();
       // assert
       expect(result, [testMovieTable]);
+    });
+    test('should throw DatabaseException when get watchlist from database is failed',
+        () async {
+      // arrange
+      when(mockDatabaseHelper.getWatchlistMovies())
+          .thenThrow(Exception());
+      // act
+      final call = dataSource.getWatchlistMovies();
+      // assert
+      expect(() => call, throwsA(isA<DatabaseException>()));
     });
   });
 }

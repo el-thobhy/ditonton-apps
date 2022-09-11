@@ -66,6 +66,18 @@ void main() {
           equals(const Left(
               ConnectionFailure('Failed to connect to the network'))));
     });
+
+    test('should return SSl failure when fail verify certificate', () async {
+      // arrange
+      when(mockRemoteDataSource.getNowPlayingTv())
+          .thenThrow(const TlsException());
+      // act
+      final result = await repository.getNowPlayingTv();
+      // assert
+      verify(mockRemoteDataSource.getNowPlayingTv());
+      expect(
+          result, equals(const Left(SSlFailure('Certificate Verify Failed'))));
+    });
   });
 
   group('Popular TV Shows', () {
@@ -104,6 +116,17 @@ void main() {
       expect(result,
           const Left(ConnectionFailure('Failed to connect to the network')));
     });
+    test('should return SSl failure when fail verify certificate', () async {
+      // arrange
+      when(mockRemoteDataSource.getPopularTv())
+          .thenThrow(const TlsException());
+      // act
+      final result = await repository.getPopularTv();
+      // assert
+      verify(mockRemoteDataSource.getPopularTv());
+      expect(
+          result, equals(const Left(SSlFailure('Certificate Verify Failed'))));
+    });
   });
 
   group('Top Rated TV Shows', () {
@@ -141,6 +164,17 @@ void main() {
       // assert
       expect(result,
           const Left(ConnectionFailure('Failed to connect to the network')));
+    });
+    test('should return SSl failure when fail verify certificate', () async {
+      // arrange
+      when(mockRemoteDataSource.getTopRatedTv())
+          .thenThrow(const TlsException());
+      // act
+      final result = await repository.getTopRatedTv();
+      // assert
+      verify(mockRemoteDataSource.getTopRatedTv());
+      expect(
+          result, equals(const Left(SSlFailure('Certificate Verify Failed'))));
     });
   });
 
@@ -186,6 +220,17 @@ void main() {
           result,
           equals(const Left(
               ConnectionFailure('Failed to connect to the network'))));
+    });
+    test('should return SSl failure when fail verify certificate', () async {
+      // arrange
+      when(mockRemoteDataSource.getTvDetail(tId))
+          .thenThrow(const TlsException());
+      // act
+      final result = await repository.getTvDetail(tId);
+      // assert
+      verify(mockRemoteDataSource.getTvDetail(tId));
+      expect(
+          result, equals(const Left(SSlFailure('Certificate Verify Failed'))));
     });
   });
 
@@ -234,6 +279,17 @@ void main() {
           equals(const Left(
               ConnectionFailure('Failed to connect to the network'))));
     });
+    test('should return SSl failure when fail verify certificate', () async {
+      // arrange
+      when(mockRemoteDataSource.getTvRecommendations(tId))
+          .thenThrow(const TlsException());
+      // act
+      final result = await repository.getTvRecommendations(tId);
+      // assert
+      verify(mockRemoteDataSource.getTvRecommendations(tId));
+      expect(
+          result, equals(const Left(SSlFailure('Certificate Verify Failed'))));
+    });
   });
 
   group('Seach TV Shows', () {
@@ -273,6 +329,17 @@ void main() {
       // assert
       expect(result,
           const Left(ConnectionFailure('Failed to connect to the network')));
+    });
+    test('should return SSl failure when fail verify certificate', () async {
+      // arrange
+      when(mockRemoteDataSource.searchTv(tQuery))
+          .thenThrow(const TlsException());
+      // act
+      final result = await repository.searchTv(tQuery);
+      // assert
+      verify(mockRemoteDataSource.searchTv(tQuery));
+      expect(
+          result, equals(const Left(SSlFailure('Certificate Verify Failed'))));
     });
   });
 
