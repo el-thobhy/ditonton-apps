@@ -10,7 +10,7 @@ import 'package:core/domain/entities/tv_show.dart' as _i7;
 import 'package:core/domain/repositories/tv_show_repository.dart' as _i2;
 import 'package:dartz/dartz.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:tvshow/domain/usecases/tv_show/get_now_playing_tv_shows.dart'
+import 'package:core/domain/usecases/tv_show/get_now_playing_tv_shows.dart'
     as _i4;
 
 // ignore_for_file: type=lint

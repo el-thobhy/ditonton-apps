@@ -1,7 +1,7 @@
 import 'package:core/domain/entities/movie.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie/domain/usecases/movie/get_popular_movies.dart';
+import 'package:core/domain/usecases/movie/get_popular_movies.dart';
 import 'package:rxdart/rxdart.dart';
 
 part 'popular_movie_event.dart';

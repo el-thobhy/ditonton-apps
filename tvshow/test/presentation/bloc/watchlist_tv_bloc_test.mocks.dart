@@ -9,7 +9,7 @@ import 'package:core/common/failure.dart' as _i5;
 import 'package:core/domain/entities/tv_show.dart' as _i6;
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:tvshow/domain/usecases/tv_show/get_watchlist_tv_shows.dart'
+import 'package:core/domain/usecases/tv_show/get_watchlist_tv_shows.dart'
     as _i3;
 
 // ignore_for_file: type=lint
